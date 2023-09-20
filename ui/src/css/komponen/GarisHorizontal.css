@@ -1,0 +1,12 @@
+.GarisHorizontal {
+  border: none;
+}
+.GarisHorizontal-kecil {
+  width: 50%;
+}
+.GarisHorizontal-sedang {
+  width: 70%;
+}
+.GarisHorizontal-besar {
+  width: 90%;
+}
