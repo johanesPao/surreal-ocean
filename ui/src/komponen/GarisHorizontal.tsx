@@ -26,14 +26,12 @@ export const GarisHorizontal = ({
   return (
     <motion.div
       initial={{
-        y: -10,
         opacity: 0,
-        scale: 0.2,
+        scale: 0,
       }}
       whileInView={{
-        y: 0,
         opacity: 1,
-        scale: [0.6, 1, 0.7, 1, 0.8, 1, 0.9, 1],
+        scale: [0.2, 1, 0.5, 1, 0.9, 1],
       }}
       transition={{ delay: 0.2, duration: 1 }}
     >
