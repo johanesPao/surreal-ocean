@@ -31,9 +31,9 @@ export const GarisHorizontal = ({
       }}
       whileInView={{
         opacity: 1,
-        scale: [0.2, 1, 0.5, 1, 0.9, 1],
+        scale: [0.1, 0.95, 1],
       }}
-      transition={{ delay: 0.2, duration: 1 }}
+      transition={{ delay: 0.2, duration: 1.25 }}
     >
       <hr
         className={["GarisHorizontal", `GarisHorizontal-${ukuran}`].join(" ")}
