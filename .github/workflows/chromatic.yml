@@ -6,7 +6,7 @@ defaults:
   run:
     working-directory: ui
 jobs:
-  test:
+  test-dan-deploy-storybook-ke-chromatic:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
