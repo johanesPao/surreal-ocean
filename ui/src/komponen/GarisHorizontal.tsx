@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { EUkuran, EWarna } from "../enum";
+import "../css/Global.css";
 import "../css/komponen/GarisHorizontal.css";
 
 interface GarisHorizontalProps {
@@ -17,10 +18,10 @@ interface GarisHorizontalProps {
   tinggi?: number;
 }
 
-export const GarisHorizontal = ({
-  warna = EWarna.PRIMER,
+const GarisHorizontal = ({
+  warna = EWarna.KUARTENER,
   ukuran = EUkuran.KCL,
-  tinggi = 1,
+  tinggi = 2,
   ...props
 }: GarisHorizontalProps) => {
   return (
@@ -47,3 +48,5 @@ export const GarisHorizontal = ({
     </motion.div>
   );
 };
+
+export default GarisHorizontal;

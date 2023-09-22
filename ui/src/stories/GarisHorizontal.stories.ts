@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { GarisHorizontal } from "../komponen/GarisHorizontal";
+import GarisHorizontal from "../komponen/GarisHorizontal";
 import { EUkuran } from "../enum";
 
 const meta = {
