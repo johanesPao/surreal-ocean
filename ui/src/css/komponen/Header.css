@@ -1,0 +1,19 @@
+.kontainerHeader {
+  margin: 0em;
+  padding: 0em;
+}
+
+.kontainerHeader .nama {
+  margin: 0em;
+  padding: 0em;
+}
+
+.kontainerHeader .jabatan {
+  margin: 0em;
+  padding: -3em 0em 0.2em 0em;
+}
+
+.kontainerHeader .infoDeskripsi {
+  margin: 0em;
+  padding: 0em;
+}
