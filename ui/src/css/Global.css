@@ -1,0 +1,21 @@
+@font-face {
+  font-family: "Space Mono";
+  src: local("Space Mono"),
+    url(../assets/fonts/SpaceMono-Regular.ttf) format("truetype");
+}
+
+:root {
+  --warna-teks-dasar: #242424;
+  --warna-primer: #f6f1f1;
+  --warna-sekunder: #afd3e2;
+  --warna-tersier: #19a7ce;
+  --warna-kuartener: #146c94;
+}
+
+body {
+  margin: 0em;
+  padding: 10em;
+  font-family: "Space Mono";
+  background-color: var(--warna-primer);
+  color: var(--warna-teks-dasar);
+}
