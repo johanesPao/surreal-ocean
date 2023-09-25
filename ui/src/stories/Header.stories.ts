@@ -38,7 +38,7 @@ export const SpeedDeskripsi: Story = {
     ...Normal.args,
     infoDeskripsi: {
       ...Normal.args.infoDeskripsi,
-      kecepatanTulis: 0.01,
+      kecepatanTulis: 20,
     },
   },
 };
@@ -50,6 +50,10 @@ export const KursorJabatan: Story = {
       ...SpeedDeskripsi.args.jabatan,
       kursor: "_",
     },
+    infoDeskripsi: {
+      ...SpeedDeskripsi.args.infoDeskripsi,
+      kursor: "_",
+    },
   },
 };
 
@@ -59,6 +63,10 @@ export const StylingNamaDanInfo: Story = {
     nama: {
       ...KursorJabatan.args.nama,
       className: "header-nama",
+    },
+    jabatan: {
+      ...KursorJabatan.args.jabatan,
+      className: "header-jabatan",
     },
     infoDeskripsi: {
       ...KursorJabatan.args.infoDeskripsi,
@@ -80,7 +88,17 @@ export const ArrayTeksJabatan: Story = {
         "Learning Data Scientist",
         "Senior Business Analyst",
       ],
-      jedaAntarArray: 1500,
+      jedaAntarArray: 1000,
+    },
+  },
+};
+
+export const LoopJabatan: Story = {
+  args: {
+    ...ArrayTeksJabatan.args,
+    jabatan: {
+      ...ArrayTeksJabatan.args.jabatan,
+      loop: true,
     },
   },
 };

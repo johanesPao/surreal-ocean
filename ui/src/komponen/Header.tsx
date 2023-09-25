@@ -24,9 +24,15 @@ const Header = ({
 }: HeaderProps) => {
   return (
     <div className="kontainerHeader">
-      <TeksKetikan {...nama} />
-      <TeksKetikan {...jabatan} />
-      <TeksKetikan {...infoDeskripsi} />
+      <div className={nama.className}>
+        <TeksKetikan {...nama} />
+      </div>
+      <div className={jabatan.className}>
+        <TeksKetikan {...jabatan} />
+      </div>
+      <div className={infoDeskripsi.className}>
+        <TeksKetikan {...infoDeskripsi} />
+      </div>
     </div>
   );
 };

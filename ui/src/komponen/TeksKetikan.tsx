@@ -19,10 +19,8 @@ const TeksKetikan = ({
       onInit={(ketikan) => {
         ketikan.changeDelay(kecepatanTulis);
         ketikan.changeDeleteSpeed(kecepatanHapus);
-        console.log(typeof teks);
         if (Array.isArray(teks)) {
           for (var [indeks, elemenTeks] of teks.entries()) {
-            console.log(indeks, elemenTeks);
             ketikan.typeString(elemenTeks);
             if (indeks !== teks.length - 1) {
               ketikan.pauseFor(jedaAntarArray);
