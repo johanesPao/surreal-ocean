@@ -1,7 +1,91 @@
 @font-face {
+  font-family: "Cornerstone";
+  src: local("Cornerstone"),
+    url(../assets/fonts/Cornerstone.ttf) format("truetype");
+}
+
+@font-face {
   font-family: "Space Mono";
   src: local("Space Mono"),
     url(../assets/fonts/SpaceMono-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Space Mono Bold";
+  src: local("Space Mono Bold"),
+    url(../assets/fonts/SpaceMono-Bold.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Space Mono Italic";
+  src: local("Space Mono Italic"),
+    url(../assets/fonts/SpaceMono-Italic.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Mosk 100";
+  src: local("Mosk 100"),
+    url(../assets/fonts/Mosk\ Thin\ 100.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Mosk 200";
+  src: local("Mosk 200"),
+    url(../assets/fonts/Mosk\ Extra-Light\ 200.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Mosk 300";
+  src: local("Mosk 300"),
+    url(../assets/fonts/Mosk\ Light\ 300.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Mosk 400";
+  src: local("Mosk 400"),
+    url(../assets/fonts/Mosk\ Normal\ 400.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Mosk 500";
+  src: local("Mosk 500"),
+    url(../assets/fonts/Mosk\ Medium\ 500.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Fivo Regular";
+  src: local("Fivo Regular"),
+    url(../assets/fonts/FivoSans-Regular.otf) format("opentype");
+}
+
+@font-face {
+  font-family: "Fivo Bold";
+  src: local("Fivo Bold"),
+    url(../assets/fonts/FivoSans-Bold.otf) format("opentype");
+}
+
+@font-face {
+  font-family: "Fivo Bold Italic";
+  src: local("Fivo Bold Italic"),
+    url(../assets/fonts/FivoSans-Bold-Oblique.otf) format("opentype");
+}
+
+@font-face {
+  font-family: "Fivo Italic";
+  src: local("Fivo Italic"),
+    url(../assets/fonts/FivoSans-Oblique.otf) format("opentype");
+}
+
+@font-face {
+  font-family: "Fivo Thin Italic";
+  src: local("Fivo Thin Italic"),
+    url(../assets/fonts/FivoSans-Thin-Oblique.otf) format("opentype");
+}
+
+@font-face {
+  font-family: "Fivo Thin";
+  src: local("Fivo Thin"),
+    url(../assets/fonts/FivoSans-Thin.otf) format("opentype");
 }
 
 :root {
@@ -15,7 +99,7 @@
 body {
   margin: 0em;
   padding: 10em;
-  font-family: "Space Mono";
+  font-family: "Fivo Regular";
   background-color: var(--warna-primer);
   color: var(--warna-teks-dasar);
 }
