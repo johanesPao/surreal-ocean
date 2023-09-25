@@ -10,18 +10,18 @@ export default create({
   brandTarget: "_self",
 
   colorPrimary: EWarna.TEKS,
-  colorSecondary: EWarna.TEKS,
+  colorSecondary: EWarna.TERSIER,
 
   appBg: EWarna.TEKS,
   appContentBg: EWarna.TEKS,
 
   textColor: EWarna.PRIMER,
-  textInverseColor: EWarna.PRIMER,
+  textInverseColor: EWarna.TEKS,
 
-  barTextColor: EWarna.PRIMER,
+  barTextColor: EWarna.TEKS,
   barSelectedColor: EWarna.TERSIER,
   barBg: EWarna.TEKS,
 
   inputBg: EWarna.TEKS,
-  inputTextColor: EWarna.PRIMER,
+  inputTextColor: EWarna.TERSIER,
 });
