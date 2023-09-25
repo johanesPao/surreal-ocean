@@ -2,21 +2,7 @@ import { motion } from "framer-motion";
 import { EUkuran, EWarna } from "../enum";
 import "../css/Global.css";
 import "../css/komponen/GarisHorizontal.css";
-
-interface GarisHorizontalProps {
-  /**
-   * Warna dari garis horizontal (default #000000)
-   */
-  warna?: string;
-  /**
-   * Ukuran garis horizontal (default "kecil")
-   */
-  ukuran?: string;
-  /**
-   * Tinggi garis horizontal (default 1)
-   */
-  tinggi?: number;
-}
+import { GarisHorizontalProps } from "../props/GarisHorizontal.props";
 
 const GarisHorizontal = ({
   warna = EWarna.KUARTENER,

@@ -1,42 +1,18 @@
 import Typewriter from "typewriter-effect";
 
 import "../css/Global.css";
-
-interface TeksKetikanProps {
-  /**
-   * Nilai dari teks yang akan digunakan komponen ini.
-   * Bisa berupa string atau array string.
-   */
-  teks: string | string[];
-  /**
-   * Nilai kecepatan menulis karakter dalam milidetik.
-   */
-  kecepatanTulis?: number;
-  /**
-   * Nilai boolean pengulangan efek ketikan
-   */
-  loop?: boolean;
-  /**
-   * Nilai jeda antar loop string
-   */
-  jedaAntarLoop?: number;
-  /**
-   * Karakter yang akan digunakan sebagai kursor
-   */
-  kursor?: string;
-  /**
-   * Nilai kecepatan menghapus dalam milidetik
-   */
-  kecepatanHapus?: number;
-}
+import { TeksKetikanProps } from "../props/TeksKetikan.props";
+import { EKonstan } from "../enum";
 
 const TeksKetikan = ({
   teks,
-  kecepatanTulis = 35,
+  kecepatanTulis = EKonstan.JEDA_TEKS_KETIKAN,
+  jedaAntarArray = EKonstan.JEDA_ARRAY_TEKS_KETIKAN,
   loop = false,
-  jedaAntarLoop = kecepatanTulis * 30,
+  jedaAntarLoop = EKonstan.JEDA_LOOP_TEKS_KETIKAN,
   kursor = "",
-  kecepatanHapus = 20,
+  kecepatanHapus = EKonstan.KECEPATAN_HAPUS_TEKS_KETIKAN,
+  className = "",
 }: TeksKetikanProps) => {
   return (
     <Typewriter
@@ -49,7 +25,7 @@ const TeksKetikan = ({
             console.log(indeks, elemenTeks);
             ketikan.typeString(elemenTeks);
             if (indeks !== teks.length - 1) {
-              ketikan.pauseFor(kecepatanTulis);
+              ketikan.pauseFor(jedaAntarArray);
               ketikan.deleteAll();
             } else {
               ketikan.pauseFor(jedaAntarLoop);
@@ -64,6 +40,7 @@ const TeksKetikan = ({
       options={{
         cursor: kursor,
         loop,
+        wrapperClassName: className,
       }}
     />
   );
