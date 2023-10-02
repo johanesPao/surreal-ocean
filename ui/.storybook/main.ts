@@ -12,7 +12,6 @@ const config: StorybookConfig = {
         docs: false,
       },
     },
-    "@storybook/addon-onboarding",
     "@storybook/addon-interactions",
     {
       name: "@storybook/addon-docs",
@@ -24,6 +23,8 @@ const config: StorybookConfig = {
         },
       },
     },
+    "@storybook/addon-styling",
+    "storybook-dark-mode",
   ],
   framework: {
     name: "@storybook/react-vite",

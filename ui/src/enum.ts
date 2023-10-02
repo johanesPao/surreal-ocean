@@ -18,3 +18,15 @@ export enum EKonstan {
   JEDA_LOOP_TEKS_KETIKAN = JEDA_TEKS_KETIKAN * 30,
   KECEPATAN_HAPUS_TEKS_KETIKAN = 20,
 }
+
+export enum EAlignmentRentangWaktu {
+  KIRI = "left",
+  KANAN = "right",
+}
+
+export enum EWaktuKonversiMS {
+  DETIK = 1000,
+  MENIT = DETIK * 60,
+  JAM = MENIT * 60,
+  HARI = JAM * 24,
+}

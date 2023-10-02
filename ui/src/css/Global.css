@@ -99,7 +99,12 @@
 body {
   margin: 0em;
   padding: 10em;
+  width: 100vw;
   font-family: "Fivo Regular";
   background-color: var(--warna-primer);
   color: var(--warna-teks-dasar);
+}
+
+.curr-vitae {
+  /* width: 100vw; */
 }

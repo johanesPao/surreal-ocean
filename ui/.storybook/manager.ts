@@ -1,6 +1,6 @@
-import { addons } from "@storybook/manager-api";
-import Tema from "./Tema";
+// import { addons } from "@storybook/manager-api";
+// import Tema from "./Tema";
 
-addons.setConfig({
-  theme: Tema,
-});
+// addons.setConfig({
+//   theme: Tema,
+// });

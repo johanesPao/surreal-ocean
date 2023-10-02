@@ -19,7 +19,7 @@ type Story = StoryObj<typeof meta>;
 export const Normal: Story = {
   args: {
     nama: {
-      teks: "Johanes Indra Pradana Pao",
+      teks: "Johanes Gregorius Indra Pradana Pao",
     },
     jabatan: {
       teks: "Senior Business Analyst",
