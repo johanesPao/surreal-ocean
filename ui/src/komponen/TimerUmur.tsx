@@ -13,14 +13,7 @@ import {
 } from "@tabler/icons-react";
 import { useEffect, useState } from "react";
 import { EWarna } from "../enum";
-
-interface TimerUmurProps {
-  tahun: number;
-  bulan: number;
-  tanggal: number;
-  jam?: number;
-  menit?: number;
-}
+import { IUmur, TimerUmurProps } from "../props/TimerUmur.props";
 
 const defaultStyle = {
   kontainer: {
@@ -56,15 +49,6 @@ const TimerUmur = ({
 }: TimerUmurProps) => {
   // konstruksi tanggal lahir (month pada fungsi built in javascript menggunakan zero indexing)
   const tglLahir = new Date(tahun, bulan - 1, tanggal, jam, menit);
-
-  interface IUmur {
-    tahun: number;
-    bulan: number;
-    hari: number;
-    jam: number;
-    menit: number;
-    detik: number;
-  }
 
   let umur: Partial<IUmur> = {
     tahun: 0,
