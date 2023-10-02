@@ -1,15 +1,10 @@
-import { Center, Flex, Grid, Text } from "@mantine/core";
+import { Center, Flex, Text } from "@mantine/core";
 import {
   IconHexagon1Filled,
-  IconHexagon2Filled,
   IconHexagon3Filled,
-  IconHexagon4Filled,
   IconHexagon5Filled,
-  IconHexagon6Filled,
   IconHexagon7Filled,
-  IconHexagon8Filled,
   IconHexagon9Filled,
-  IconHexagonFilled,
   IconHexagonNumber0,
   IconHexagonNumber2,
   IconHexagonNumber4,
