@@ -241,11 +241,8 @@ const TimerUmur = ({
   return (
     <div style={defaultStyle.kontainer}>
       <Flex>
-        {Object.entries(waktu).map(
-          (itemWaktu) =>
-            // <Text style={{ margin: "1em 0em 1em 0em", lineHeight: "1em" }}>
-            renderIkonAngka(itemWaktu[1], itemWaktu[0])
-          // </Text>
+        {Object.entries(waktu).map((itemWaktu) =>
+          renderIkonAngka(itemWaktu[1], itemWaktu[0])
         )}
       </Flex>
     </div>
