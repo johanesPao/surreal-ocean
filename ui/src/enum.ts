@@ -30,3 +30,16 @@ export enum EWaktuKonversiMS {
   JAM = MENIT * 60,
   HARI = JAM * 24,
 }
+
+export enum EModeKontak {
+  TELP = "phone",
+  EMAIL = "email",
+  GMAIL = "gmail",
+  X = "x",
+  INSTAGRAM = "instagram",
+  TIKTOK = "tiktok",
+  DISCORD = "discord",
+  SLACK = "slack",
+  DOCKER = "docker",
+  GITHUB = "github",
+}
