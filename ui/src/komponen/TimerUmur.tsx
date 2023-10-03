@@ -13,12 +13,18 @@ import {
 } from "@tabler/icons-react";
 import { useEffect, useState } from "react";
 import { EWarna } from "../enum";
-import { IUmur, TimerUmurProps } from "../props/TimerUmur.props";
+import {
+  EBahasaTimer,
+  IKataTimer,
+  IUmur,
+  TimerUmurProps,
+  bahasaTimerUmur,
+} from "../props/TimerUmur.props";
 
 const defaultStyle = {
   kontainer: {
     width: "100%",
-    padding: "1em",
+    padding: "2em 1em 2em 1em",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -43,12 +49,13 @@ const defaultStyle = {
 const TimerUmur = ({
   tahun,
   bulan,
-  tanggal,
+  hari,
   jam = 0,
   menit = 0,
+  bahasa = "en",
 }: TimerUmurProps) => {
   // konstruksi tanggal lahir (month pada fungsi built in javascript menggunakan zero indexing)
-  const tglLahir = new Date(tahun, bulan - 1, tanggal, jam, menit);
+  const tglLahir = new Date(tahun, bulan - 1, hari, jam, menit);
 
   let umur: Partial<IUmur> = {
     tahun: 0,
@@ -59,9 +66,28 @@ const TimerUmur = ({
     detik: 0,
   };
 
+  const padStringAngka = (angka: number) => {
+    return angka.toString().padStart(2, "0");
+  };
+
+  const translasi = (teks: string, bahasa: string) => {
+    let objekKataTranslasi: Partial<IKataTimer> = {};
+
+    switch (bahasa) {
+      case EBahasaTimer.ID:
+        objekKataTranslasi = { ...bahasaTimerUmur.id };
+        break;
+      default:
+        objekKataTranslasi = { ...bahasaTimerUmur.en };
+        break;
+    }
+
+    return objekKataTranslasi[teks];
+  };
+
   const renderIkonAngka = (angka: number, teks: string) => {
     // set angka menjadi string dan padStart
-    const stringAngka = angka.toString().padStart(2, "0");
+    const stringAngka = padStringAngka(angka);
 
     return (
       <>
@@ -69,7 +95,6 @@ const TimerUmur = ({
           <Flex direction="column">
             <div style={{ paddingBottom: "-1em" }}>
               {[...stringAngka].map((angka) => {
-                console.log(angka);
                 switch (angka) {
                   case "1":
                     return <IconHexagon1Filled style={defaultStyle.ikon} />;
@@ -95,7 +120,7 @@ const TimerUmur = ({
               })}
             </div>
             <Center>
-              <Text style={defaultStyle.teks}>{teks}</Text>
+              <Text style={defaultStyle.teks}>{translasi(teks, bahasa)}</Text>
             </Center>
           </Flex>
         </div>
@@ -109,6 +134,18 @@ const TimerUmur = ({
             <Text style={defaultStyle.kolon.ukuran}>:</Text>
           </Flex>
         )}
+      </>
+    );
+  };
+
+  const renderTimerSederhana = (angka: number, teks: string) => {
+    // set angka menjadi string dan padStart
+    const stringAngka = padStringAngka(angka);
+
+    return (
+      <>
+        {stringAngka}
+        {teks !== "detik" && ` : `}
       </>
     );
   };
@@ -160,12 +197,13 @@ const TimerUmur = ({
           new Date().getFullYear(),
           new Date().getMonth(),
           new Date().getDate()
-        ) >= new Date(new Date().getFullYear(), bulan - 1, tanggal)
+        ) >= new Date(new Date().getFullYear(), bulan - 1, hari)
           ? new Date().getFullYear()
           : new Date().getFullYear() - 1,
         bulan - 1,
-        tanggal
+        hari
       );
+      console.log(tglLahirTerakhir, tahun, bulan, hari);
       // rekonstruksi IUmur
       umur = {
         ...umur,
@@ -236,13 +274,18 @@ const TimerUmur = ({
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [tahun, bulan, tanggal]);
+  }, [tahun, bulan, hari]);
 
   return (
     <div style={defaultStyle.kontainer}>
-      <Flex>
+      <Flex visibleFrom="sm">
         {Object.entries(waktu).map((itemWaktu) =>
           renderIkonAngka(itemWaktu[1], itemWaktu[0])
+        )}
+      </Flex>
+      <Flex hiddenFrom="sm">
+        {Object.entries(waktu).map((itemWaktu) =>
+          renderTimerSederhana(itemWaktu[1], itemWaktu[0])
         )}
       </Flex>
     </div>

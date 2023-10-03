@@ -108,7 +108,7 @@ const CV = () => {
         <div style={{ position: "sticky" }}>
           <Suspense fallback={<div>Loading...</div>}>
             <LazyHeader {...headerArgs} />
-            <LazyTimer tahun={1985} bulan={3} tanggal={3} />
+            <LazyTimer tahun={1985} bulan={3} hari={3} />
             <LazyKontak />
           </Suspense>
         </div>

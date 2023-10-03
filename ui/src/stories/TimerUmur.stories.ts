@@ -9,7 +9,7 @@ const meta = {
   argTypes: {
     tahun: { control: { type: "number" } },
     bulan: { control: { type: "number" } },
-    tanggal: { control: { type: "number" } },
+    hari: { control: { type: "number" } },
     jam: { control: { type: "number" } },
     menit: { control: { type: "number" } },
   },
@@ -22,7 +22,7 @@ export const Normal: Story = {
   args: {
     tahun: 1985,
     bulan: 3,
-    tanggal: 3,
+    hari: 3,
     jam: 4,
     menit: 30,
   },
