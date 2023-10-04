@@ -4,6 +4,7 @@ import { EAlignmentRentangWaktu, EWarna } from "../enum";
 import TeksKetikan from "../komponen/TeksKetikan";
 import { HeaderProps } from "../props/Header.props";
 import { RentangWaktuProps } from "../props/RentangWaktu.props";
+import { KontakProps } from "../props/Kontak.props";
 
 const LazyHeader = React.lazy(() => {
   return new Promise((resolve) => setTimeout(resolve, 1 * 1000)).then(
@@ -48,7 +49,7 @@ const CV = () => {
     indeksElemenAktif: 3,
     alignment: EAlignmentRentangWaktu.KIRI,
     ukuranBullet: 20,
-    warnaBulletGaris: EWarna.TERSIER,
+    warnaBulletGaris: EWarna.TEKS,
     lebarGaris: 3,
     radiusBullet: 100,
     pembalikanUrutanItem: false,
@@ -102,6 +103,33 @@ const CV = () => {
     ],
   };
 
+  const dataKontak: KontakProps["data"] = [
+    {
+      mode: "TELP",
+      teks: "(+62) 811 118 3385",
+      warnaIkon: EWarna.PRIMER,
+      warnaTeks: EWarna.PRIMER,
+    },
+    {
+      mode: "GMAIL",
+      teks: "johanes.pao",
+      warnaIkon: EWarna.PRIMER,
+      warnaTeks: EWarna.PRIMER,
+    },
+    {
+      mode: "GITHUB",
+      teks: "johanesPao",
+      warnaIkon: EWarna.PRIMER,
+      warnaTeks: EWarna.PRIMER,
+    },
+    {
+      mode: "X",
+      teks: "@teh_kotak_lemon",
+      warnaIkon: EWarna.PRIMER,
+      warnaTeks: EWarna.PRIMER,
+    },
+  ];
+
   return (
     <>
       <div className="curr-vitae">
@@ -109,14 +137,10 @@ const CV = () => {
           <Suspense fallback={<div>Loading...</div>}>
             <LazyHeader {...headerArgs} />
             <LazyTimer tahun={1985} bulan={3} hari={3} />
-            <LazyKontak />
+            <LazyKontak data={dataKontak} />
           </Suspense>
         </div>
         <Flex direction="column" justify="center">
-          <LazyRentangWaktu {...pendidikanArgs} />
-          <LazyRentangWaktu {...pendidikanArgs} />
-          <LazyRentangWaktu {...pendidikanArgs} />
-          <LazyRentangWaktu {...pendidikanArgs} />
           <LazyRentangWaktu {...pendidikanArgs} />
         </Flex>
       </div>

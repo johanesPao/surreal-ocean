@@ -1,11 +1,12 @@
-import { Box, Flex, Grid } from "@mantine/core";
+import { Box, Center, Grid } from "@mantine/core";
 import { EWarna } from "../enum";
 import IkonLabel from "./IkonLabel";
+import { KontakProps } from "../props/Kontak.props";
 
-const Kontak = () => {
+const Kontak = ({ data = [], bgKontak = EWarna.TEKS }: KontakProps) => {
   return (
     <div>
-      <Box bg={EWarna.SEKUNDER}>
+      <Box bg={bgKontak}>
         <Grid
           justify="space-between"
           align="center"
@@ -15,15 +16,21 @@ const Kontak = () => {
             },
           }}
         >
-          <Grid.Col span={4}>
-            <IkonLabel />
-          </Grid.Col>
-          <Grid.Col span={4}>
-            <IkonLabel />
-          </Grid.Col>
-          <Grid.Col span={4}>
-            <IkonLabel />
-          </Grid.Col>
+          {data.length > 0 &&
+            data.map((kontak, indeks) => {
+              return (
+                <Grid.Col key={indeks} span={4}>
+                  <Center>
+                    <IkonLabel
+                      mode={kontak.mode}
+                      teks={kontak.teks}
+                      warnaIkon={kontak.warnaIkon}
+                      warnaTeks={kontak.warnaTeks}
+                    />
+                  </Center>
+                </Grid.Col>
+              );
+            })}
         </Grid>
       </Box>
     </div>

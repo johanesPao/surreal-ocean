@@ -1,4 +1,5 @@
 import { ActionIcon, Box, Flex, Text } from "@mantine/core";
+import { notifications } from "@mantine/notifications";
 import {
   IconBrandDiscord,
   IconBrandDocker,
@@ -14,56 +15,88 @@ import {
 import { EModeKontak, EWarna } from "../enum";
 import { IkonLabelProps, ModeKontak } from "../props/IkonLabel.props";
 
-const renderIkon = (mode: ModeKontak) => {
+const renderIkon = (mode: ModeKontak, warnaIkon: string) => {
+  const notifikasi = () => {
+    notifications.show({
+      title: "test",
+      message: "test",
+      autoClose: 2000,
+    });
+  };
+
   let ikon: JSX.Element = <></>;
   switch (EModeKontak[mode]) {
     case EModeKontak.EMAIL:
-      ikon = <IconMail />;
+      ikon = <IconMail color={warnaIkon} />;
       break;
     case EModeKontak.GMAIL:
-      ikon = <IconBrandGmail />;
+      ikon = <IconBrandGmail color={warnaIkon} />;
       break;
     case EModeKontak.X:
-      ikon = <IconBrandX />;
+      ikon = <IconBrandX color={warnaIkon} />;
       break;
     case EModeKontak.INSTAGRAM:
-      ikon = <IconBrandInstagram />;
+      ikon = <IconBrandInstagram color={warnaIkon} />;
       break;
     case EModeKontak.TIKTOK:
-      ikon = <IconBrandTiktok />;
+      ikon = <IconBrandTiktok color={warnaIkon} />;
       break;
     case EModeKontak.DISCORD:
-      ikon = <IconBrandDiscord />;
+      ikon = <IconBrandDiscord color={warnaIkon} />;
       break;
     case EModeKontak.SLACK:
-      ikon = <IconBrandSlack />;
+      ikon = <IconBrandSlack color={warnaIkon} />;
       break;
     case EModeKontak.DOCKER:
-      ikon = <IconBrandDocker />;
+      ikon = <IconBrandDocker color={warnaIkon} />;
       break;
     case EModeKontak.GITHUB:
-      ikon = <IconBrandGithub />;
+      ikon = <IconBrandGithub color={warnaIkon} />;
       break;
     default:
-      ikon = <IconPhone />;
+      ikon = <IconPhone color={warnaIkon} />;
       break;
   }
 
   return (
     <>
-      <ActionIcon variant="subtle" c={EWarna.TEKS}>
+      <ActionIcon.Group
+        // size="xl"
+        variant="light"
+        // color={warnaIkon}
+        // onClick={() => {
+        //   notifications.show({
+        //     id: mode,
+        //     title: "test",
+        //     message: "test",
+        //     autoClose: 2000,
+        //   });
+        // }}
+      >
         {ikon}
-      </ActionIcon>
+      </ActionIcon.Group>
     </>
   );
 };
 
-const IkonLabel = ({ mode = "TELP", teks = "" }: IkonLabelProps) => {
+const IkonLabel = ({
+  mode = "TELP",
+  teks = "",
+  warnaIkon = EWarna.TEKS,
+  warnaTeks = EWarna.TEKS,
+}: IkonLabelProps) => {
   return (
     <Box>
-      <Flex gap={2} align="center">
-        {renderIkon(mode)}
-        <Text style={{ paddingTop: "0.3em" }}>{teks}</Text>
+      <Flex gap={10} align="center">
+        {renderIkon(mode, warnaIkon)}
+        <Text
+          style={{
+            paddingTop: "0.3em",
+            color: warnaTeks,
+          }}
+        >
+          {teks}
+        </Text>
       </Flex>
     </Box>
   );
