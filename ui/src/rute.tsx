@@ -11,11 +11,12 @@ const Loadable = (Component: any) => (props: JSX.IntrinsicAttributes) =>
 
 // * LANDING
 const Landing = Loadable(lazy(() => import("./halaman/Landing")));
+const CV = Loadable(lazy(() => import("./halaman/CV")));
 
 const rute: RouteObject[] = [
   {
     path: "/",
-    element: <Landing />,
+    element: <CV />,
   },
 ];
 

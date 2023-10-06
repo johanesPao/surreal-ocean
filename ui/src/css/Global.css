@@ -89,6 +89,9 @@
 }
 
 :root {
+  margin: 0em;
+  padding: 0em;
+  width: 100%;
   --warna-teks-dasar: #242424;
   --warna-primer: #f6f1f1;
   --warna-sekunder: #afd3e2;
@@ -98,13 +101,18 @@
 
 body {
   margin: 0em;
-  padding: 10em;
-  width: 100vw;
   font-family: "Fivo Regular";
   background-color: var(--warna-primer);
   color: var(--warna-teks-dasar);
+  display: flex;
 }
 
-.curr-vitae {
+.curr-vitae-bagian-atas {
   /* width: 100vw; */
+  height: 25%;
+  width: 100%;
+  position: fixed;
+}
+.curr-vitae-bagian-konten {
+  top: 25%;
 }

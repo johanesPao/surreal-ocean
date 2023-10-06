@@ -6,12 +6,7 @@ import { HeaderProps } from "../props/Header.props";
 import { RentangWaktuProps } from "../props/RentangWaktu.props";
 import { KontakProps } from "../props/Kontak.props";
 
-const LazyHeader = React.lazy(() => {
-  return new Promise((resolve) => setTimeout(resolve, 1 * 1000)).then(
-    () => import("../komponen/Header")
-  );
-  import("../komponen/Header");
-});
+const LazyHeader = React.lazy(() => import("../komponen/Header"));
 const LazyTimer = React.lazy(() => import("../komponen/TimerUmur"));
 const LazyKontak = React.lazy(() => import("../komponen/Kontak"));
 const LazyRentangWaktu = React.lazy(() => import("../komponen/RentangWaktu"));
@@ -24,6 +19,7 @@ const CV = () => {
     },
     jabatan: {
       teks: [
+        "A Loving Husband and Father",
         "Data Enthusiast",
         "Data Visualization",
         "Data Transformation",
@@ -132,18 +128,33 @@ const CV = () => {
 
   return (
     <>
-      <div className="curr-vitae">
-        <div style={{ position: "sticky" }}>
-          <Suspense fallback={<div>Loading...</div>}>
-            <LazyHeader {...headerArgs} />
-            <LazyTimer tahun={1985} bulan={3} hari={3} />
-            <LazyKontak data={dataKontak} />
-          </Suspense>
-        </div>
+      <div className="curr-vitae-bagian-atas" style={{ position: "fixed" }}>
+        <Suspense fallback={<div>Loading...</div>}>
+          <LazyHeader {...headerArgs} />
+          <LazyTimer tahun={1985} bulan={3} hari={3} />
+          {/* <LazyKontak data={dataKontak} /> */}
+        </Suspense>
+      </div>
+      {/* <div className="curr-vitae-bagian-konten">
         <Flex direction="column" justify="center">
           <LazyRentangWaktu {...pendidikanArgs} />
         </Flex>
-      </div>
+        <Flex direction="column" justify="center">
+          <LazyRentangWaktu {...pendidikanArgs} />
+        </Flex>
+        <Flex direction="column" justify="center">
+          <LazyRentangWaktu {...pendidikanArgs} />
+        </Flex>
+        <Flex direction="column" justify="center">
+          <LazyRentangWaktu {...pendidikanArgs} />
+        </Flex>
+        <Flex direction="column" justify="center">
+          <LazyRentangWaktu {...pendidikanArgs} />
+        </Flex>
+        <Flex direction="column" justify="center">
+          <LazyRentangWaktu {...pendidikanArgs} />
+        </Flex>
+      </div> */}
     </>
   );
 };

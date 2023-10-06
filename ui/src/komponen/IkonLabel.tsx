@@ -59,7 +59,7 @@ const renderIkon = (mode: ModeKontak, warnaIkon: string) => {
   }
 
   return (
-    <>
+    <Flex style={{ display: "flex", flexDirection: "row" }}>
       <ActionIcon.Group
         // size="xl"
         variant="light"
@@ -75,7 +75,7 @@ const renderIkon = (mode: ModeKontak, warnaIkon: string) => {
       >
         {ikon}
       </ActionIcon.Group>
-    </>
+    </Flex>
   );
 };
 
@@ -93,6 +93,8 @@ const IkonLabel = ({
           style={{
             paddingTop: "0.3em",
             color: warnaTeks,
+            display: "flex",
+            flexDirection: "row",
           }}
         >
           {teks}

@@ -24,8 +24,9 @@ import {
 const defaultStyle = {
   kontainer: {
     width: "100%",
-    padding: "2em 1em 2em 1em",
+    padding: "2em 0em 2em 0em",
     display: "flex",
+    flexDirection: "row" as "row",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -41,7 +42,7 @@ const defaultStyle = {
   kolon: {
     padding: "0em 1em 0em 1em",
     ukuran: {
-      fontSize: "28px",
+      fontSize: "20px",
     },
   },
 };
@@ -92,7 +93,7 @@ const TimerUmur = ({
     return (
       <>
         <div>
-          <Flex direction="column">
+          <Flex direction="row">
             <div style={{ paddingBottom: "-1em" }}>
               {[...stringAngka].map((angka) => {
                 switch (angka) {
@@ -120,7 +121,15 @@ const TimerUmur = ({
               })}
             </div>
             <Center>
-              <Text style={defaultStyle.teks}>{translasi(teks, bahasa)}</Text>
+              <Text
+                style={{
+                  ...defaultStyle.teks,
+                  textAlign: "center",
+                  marginBottom: "0em",
+                }}
+              >
+                {translasi(teks, bahasa)}
+              </Text>
             </Center>
           </Flex>
         </div>
@@ -129,9 +138,9 @@ const TimerUmur = ({
             direction="column"
             justify="center"
             align="center"
-            style={defaultStyle.kolon}
+            style={{ ...defaultStyle.kolon }}
           >
-            <Text style={defaultStyle.kolon.ukuran}>:</Text>
+            <Text style={{ ...defaultStyle.kolon.ukuran }}>:</Text>
           </Flex>
         )}
       </>
@@ -278,12 +287,12 @@ const TimerUmur = ({
 
   return (
     <div style={defaultStyle.kontainer}>
-      <Flex visibleFrom="sm">
+      <Flex visibleFrom="sm" style={{ display: "flex", flexDirection: "row" }}>
         {Object.entries(waktu).map((itemWaktu) =>
           renderIkonAngka(itemWaktu[1], itemWaktu[0])
         )}
       </Flex>
-      <Flex hiddenFrom="sm">
+      <Flex hiddenFrom="sm" style={{ display: "flex", flexDirection: "row" }}>
         {Object.entries(waktu).map((itemWaktu) =>
           renderTimerSederhana(itemWaktu[1], itemWaktu[0])
         )}
