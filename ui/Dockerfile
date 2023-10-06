@@ -1,27 +1,16 @@
 # syntax=docker/dockerfile:1
 # escape=`
 # ---------------------------------------------------------- Build Image
-FROM node:latest AS build
+FROM alpine AS build-image
+RUN apk update && apk upgrade
+RUN apk add nodejs npm
 ENV FOLDER /ui
-# Update paket dan aplikasi pada debian os untuk kompilasi npm modul
-RUN apt-get update && apt-get install -y
+ENV FOLDER_BUILD /dist
 WORKDIR ${FOLDER}
 COPY package*.json ${FOLDER}
-RUN npm -i
+RUN npm install
+RUN npm run build
 
-
-# ---------------------------------------------------------- Development Image
-# Menggunakan node dengan platform minimal alpine
-FROM node:alpine
-# Setup variabel lingkungan
-ENV FOLDER /ui
-COPY --from=build ${FOLDER} ${FOLDER}
-# Set pengguna dalam kontainer default ke node dan
-# memastikan semua perintah di kontainer di bawah ini
-# dieksekusi dan dimiliki oeleh pengguna node
-USER node
-# Folder kerja
-WORKDIR ${FOLDER}
-COPY --chown=node:node --from=build ${FOLDER}/node_modules ${FOLDER}/node_modules
-COPY --chown=node:node . ${FOLDER}
-
+# ---------------------------------------------------------- Production Image
+FROM nginx AS production-image
+COPY --from=build-image ${FOLDER}${FOLDER_BUILD} /usr/share/nginx/html

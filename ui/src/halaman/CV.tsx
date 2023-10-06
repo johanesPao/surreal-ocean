@@ -135,6 +135,9 @@ const CV = () => {
           {/* <LazyKontak data={dataKontak} /> */}
         </Suspense>
       </div>
+      <Flex direction="column" justify="center">
+          <LazyRentangWaktu {...pendidikanArgs} />
+        </Flex>
       {/* <div className="curr-vitae-bagian-konten">
         <Flex direction="column" justify="center">
           <LazyRentangWaktu {...pendidikanArgs} />
