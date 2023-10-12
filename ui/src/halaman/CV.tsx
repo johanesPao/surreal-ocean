@@ -1,10 +1,14 @@
+/* eslint-disable react-refresh/only-export-components */
 import React, { Suspense } from "react";
-import { Flex } from "@mantine/core";
-import { EAlignmentRentangWaktu, EWarna } from "../enum";
+import { tema } from '../MantineTheme';
+import {
+  EAlignmentRentangWaktu,
+  EWarna
+} from "../enum";
 import TeksKetikan from "../komponen/TeksKetikan";
 import { HeaderProps } from "../props/Header.props";
+import { KontakProps } from '../props/Kontak.props';
 import { RentangWaktuProps } from "../props/RentangWaktu.props";
-import { KontakProps } from "../props/Kontak.props";
 
 const LazyHeader = React.lazy(() => import("../komponen/Header"));
 const LazyTimer = React.lazy(() => import("../komponen/TimerUmur"));
@@ -118,30 +122,29 @@ const CV = () => {
       warnaIkon: EWarna.PRIMER,
       warnaTeks: EWarna.PRIMER,
     },
-    {
-      mode: "X",
-      teks: "@teh_kotak_lemon",
-      warnaIkon: EWarna.PRIMER,
-      warnaTeks: EWarna.PRIMER,
-    },
+    // {
+    //   mode: "X",
+    //   teks: "@teh_kotak_lemon",
+    //   warnaIkon: EWarna.PRIMER,
+    //   warnaTeks: EWarna.PRIMER,
+    // },
   ];
 
   return (
     <>
       <div className="curr-vitae-bagian-atas" style={{ position: "fixed" }}>
+        <LazyHeader {...headerArgs} />
+        <LazyTimer tahun={1985} bulan={3} hari={3} />
+      </div>
+      <div className="curr-vitae-bagian-konten">
         <Suspense fallback={<div>Loading...</div>}>
-          <LazyHeader {...headerArgs} />
-          <LazyTimer tahun={1985} bulan={3} hari={3} />
-          {/* <LazyKontak data={dataKontak} /> */}
+          <LazyKontak data={dataKontak} />
+          <LazyRentangWaktu {...pendidikanArgs} />
+          <text>Test</text>
         </Suspense>
       </div>
-      <Flex direction="column" justify="center">
-          <LazyRentangWaktu {...pendidikanArgs} />
-        </Flex>
       {/* <div className="curr-vitae-bagian-konten">
-        <Flex direction="column" justify="center">
-          <LazyRentangWaktu {...pendidikanArgs} />
-        </Flex>
+        
         <Flex direction="column" justify="center">
           <LazyRentangWaktu {...pendidikanArgs} />
         </Flex>

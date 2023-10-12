@@ -25,6 +25,11 @@ export const Normal: Story = {
   args: {
     data: [
       {
+        mode: "TELP",
+        teks: "(+62) 811 118 3385",
+        ...warnaNormalProps
+      },
+      {
         mode: "GMAIL",
         teks: "johanes.pao",
         ...warnaNormalProps

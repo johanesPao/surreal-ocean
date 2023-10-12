@@ -1,43 +1,28 @@
-import "@mantine/core/styles.css";
-
-import React, { useEffect } from "react";
-import { addons } from "@storybook/preview-api";
-import { DARK_MODE_EVENT_NAME } from "storybook-dark-mode";
+import React from "react";
 import type { Preview } from "@storybook/react";
-import { MantineProvider, useMantineColorScheme, Text } from "@mantine/core";
+import { withThemeByDataAttribute } from '@storybook/addon-themes'
 import { EWarna } from "../src/enum";
-
-import { theme } from "../src/MantineTheme";
-
-const channel = addons.getChannel();
-
-const ColorSchemeWrapper = ({ children }: { children: React.ReactNode }) => {
-  const { setColorScheme } = useMantineColorScheme();
-  const handleColorScheme = (value: boolean) =>
-    setColorScheme(value ? "dark" : "light");
-
-  useEffect(() => {
-    channel.on(DARK_MODE_EVENT_NAME, handleColorScheme);
-    return () => channel.off(DARK_MODE_EVENT_NAME, handleColorScheme);
-  }, [channel]);
-
-  return <>{children}</>;
-};
+import '../src/index.css';
 
 const preview: Preview = {
   decorators: [
-    (renderStory) => <ColorSchemeWrapper>{renderStory()}</ColorSchemeWrapper>,
+    withThemeByDataAttribute({
+      themes: {
+        light: 'light',
+        dark: 'dark'
+      },
+      defaultTheme: 'dark',
+      attributeName: 'data-mode'
+    }),
     (renderStory) => (
-      <MantineProvider theme={theme}>
-        <div style={{ margin: "3em" }}>
-          <Text c={EWarna.SEKUNDER} mb={0} pb={0}>
-            area komponen
-          </Text>
-          <div style={{ margin: 0, border: `1px dashed ${EWarna.SEKUNDER}` }}>
-            {renderStory()}
-          </div>
+      <div style={{ margin: "3em" }}>
+        <text>
+          area komponen
+        </text>
+        <div style={{ margin: 0, border: `1px dashed ${EWarna.SEKUNDER}` }}>
+          {renderStory()}
         </div>
-      </MantineProvider>
+      </div>
     ),
     // (Story) => (
     //   <MantineProvider theme={tema}>

@@ -1,4 +1,3 @@
-import { Center, Flex, Text } from "@mantine/core";
 import {
   IconHexagon1Filled,
   IconHexagon3Filled,
@@ -93,55 +92,44 @@ const TimerUmur = ({
     return (
       <>
         <div>
-          <Flex direction="row">
-            <div style={{ paddingBottom: "-1em" }}>
-              {[...stringAngka].map((angka) => {
-                switch (angka) {
-                  case "1":
-                    return <IconHexagon1Filled style={defaultStyle.ikon} />;
-                  case "2":
-                    return <IconHexagonNumber2 style={defaultStyle.ikon} />;
-                  case "3":
-                    return <IconHexagon3Filled style={defaultStyle.ikon} />;
-                  case "4":
-                    return <IconHexagonNumber4 style={defaultStyle.ikon} />;
-                  case "5":
-                    return <IconHexagon5Filled style={defaultStyle.ikon} />;
-                  case "6":
-                    return <IconHexagonNumber6 style={defaultStyle.ikon} />;
-                  case "7":
-                    return <IconHexagon7Filled style={defaultStyle.ikon} />;
-                  case "8":
-                    return <IconHexagonNumber8 style={defaultStyle.ikon} />;
-                  case "9":
-                    return <IconHexagon9Filled style={defaultStyle.ikon} />;
-                  default:
-                    return <IconHexagonNumber0 style={defaultStyle.ikon} />;
-                }
-              })}
-            </div>
-            <Center>
-              <Text
-                style={{
-                  ...defaultStyle.teks,
-                  textAlign: "center",
-                  marginBottom: "0em",
-                }}
-              >
-                {translasi(teks, bahasa)}
-              </Text>
-            </Center>
-          </Flex>
+          <div style={{ paddingBottom: "-1em" }}>
+            {[...stringAngka].map((angka) => {
+              switch (angka) {
+                case "1":
+                  return <IconHexagon1Filled style={defaultStyle.ikon} />;
+                case "2":
+                  return <IconHexagonNumber2 style={defaultStyle.ikon} />;
+                case "3":
+                  return <IconHexagon3Filled style={defaultStyle.ikon} />;
+                case "4":
+                  return <IconHexagonNumber4 style={defaultStyle.ikon} />;
+                case "5":
+                  return <IconHexagon5Filled style={defaultStyle.ikon} />;
+                case "6":
+                  return <IconHexagonNumber6 style={defaultStyle.ikon} />;
+                case "7":
+                  return <IconHexagon7Filled style={defaultStyle.ikon} />;
+                case "8":
+                  return <IconHexagonNumber8 style={defaultStyle.ikon} />;
+                case "9":
+                  return <IconHexagon9Filled style={defaultStyle.ikon} />;
+                default:
+                  return <IconHexagonNumber0 style={defaultStyle.ikon} />;
+              }
+            })}
+          </div>
+          <text
+            style={{
+              ...defaultStyle.teks,
+              textAlign: "center",
+              marginBottom: "0em",
+            }}
+          >
+            {translasi(teks, bahasa)}
+          </text>
         </div>
         {teks !== "detik" && (
-          <Flex
-            direction="column"
-            justify="center"
-            align="center"
-            style={{ ...defaultStyle.kolon }}
-          >
-            <Text style={{ ...defaultStyle.kolon.ukuran }}>:</Text>
-          </Flex>
+          <text style={{ ...defaultStyle.kolon.ukuran }}>:</text>
         )}
       </>
     );
@@ -237,20 +225,20 @@ const TimerUmur = ({
           new Date().getDate() >= tglLahir.getDate()
             ? new Date().getDate() - tglLahir.getDate()
             : hariPadaBulanSebelumnya(
-                new Date().getFullYear(),
-                new Date().getMonth(),
-                tglLahir.getDate()
-              ) +
-              tglLahir.getDate() -
-              // jika jam pada new Date() lebih besar dari jam pada tglLahir
-              (new Date().getHours() >= tglLahir.getHours()
-                ? // evaluasi menit pada new Date() >= tglLahir, jika menit juga sudah lebih
-                  // besar sama dengan, maka 0, selain itu 1
-                  new Date().getMinutes() >= tglLahir.getMinutes()
-                  ? 0
-                  : 1
-                : // jika jam pada new Date() < dari tglLahir maka kurangi 1 hari
-                  1),
+              new Date().getFullYear(),
+              new Date().getMonth(),
+              tglLahir.getDate()
+            ) +
+            tglLahir.getDate() -
+            // jika jam pada new Date() lebih besar dari jam pada tglLahir
+            (new Date().getHours() >= tglLahir.getHours()
+              ? // evaluasi menit pada new Date() >= tglLahir, jika menit juga sudah lebih
+              // besar sama dengan, maka 0, selain itu 1
+              new Date().getMinutes() >= tglLahir.getMinutes()
+                ? 0
+                : 1
+              : // jika jam pada new Date() < dari tglLahir maka kurangi 1 hari
+              1),
         // konteks jam juga perlu melihat jam lahir pengguna
         // jika jam saat ini lebih kecil dari jam lahir pengguna, maka perlu untuk menambahkan
         // jumlah jam yang sudah berlalu pada hari sebelumnya dan jam yang berlalu saat ini
@@ -259,18 +247,18 @@ const TimerUmur = ({
           (new Date().getHours() >= tglLahir.getHours()
             ? new Date().getHours() - tglLahir.getHours()
             : // jika jam saat ini lebih kecil dari jam kelahiran
-              // fallback jumlah jam yang telah lewat pada hari sebelumnya
-              // ditambah dengan jam saat ini
-              jumlahJamHariSebelumnya(
-                tglLahir.getHours(),
-                tglLahir.getMinutes()
-              ) + new Date().getHours()) -
+            // fallback jumlah jam yang telah lewat pada hari sebelumnya
+            // ditambah dengan jam saat ini
+            jumlahJamHariSebelumnya(
+              tglLahir.getHours(),
+              tglLahir.getMinutes()
+            ) + new Date().getHours()) -
           // evaluasi  menit saat ini berbanding dengan menit kelahiran
           (new Date().getMinutes() >= tglLahir.getMinutes()
             ? // jika menit saat ini juga sudah melewati menit kelahiran, maka 0
-              0
+            0
             : // jika menit saat ini belum melewati menit kelahiran, maka kurangi 1 jam
-              1),
+            1),
         // dalam konteks menit, kita hanya perlu melihat jika menit saat ini sudah lebih besar
         // atau sama dengan menit kelahiran
         menit:
@@ -287,16 +275,16 @@ const TimerUmur = ({
 
   return (
     <div style={defaultStyle.kontainer}>
-      <Flex visibleFrom="sm" style={{ display: "flex", flexDirection: "row" }}>
+      <div>
         {Object.entries(waktu).map((itemWaktu) =>
           renderIkonAngka(itemWaktu[1], itemWaktu[0])
         )}
-      </Flex>
-      <Flex hiddenFrom="sm" style={{ display: "flex", flexDirection: "row" }}>
+      </div>
+      <div>
         {Object.entries(waktu).map((itemWaktu) =>
           renderTimerSederhana(itemWaktu[1], itemWaktu[0])
         )}
-      </Flex>
+      </div>
     </div>
   );
 };

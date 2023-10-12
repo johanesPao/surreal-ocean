@@ -1,5 +1,4 @@
-import { ActionIcon, Box, Flex, Text } from "@mantine/core";
-import { notifications } from "@mantine/notifications";
+// import { notifications } from "@mantine/notifications";
 import {
   IconBrandDiscord,
   IconBrandDocker,
@@ -16,13 +15,13 @@ import { EModeKontak, EWarna } from "../enum";
 import { IkonLabelProps, ModeKontak } from "../props/IkonLabel.props";
 
 const renderIkon = (mode: ModeKontak, warnaIkon: string) => {
-  const notifikasi = () => {
-    notifications.show({
-      title: "test",
-      message: "test",
-      autoClose: 2000,
-    });
-  };
+  // const notifikasi = () => {
+  //   notifications.show({
+  //     title: "test",
+  //     message: "test",
+  //     autoClose: 2000,
+  //   });
+  // };
 
   let ikon: JSX.Element = <></>;
   switch (EModeKontak[mode]) {
@@ -59,23 +58,9 @@ const renderIkon = (mode: ModeKontak, warnaIkon: string) => {
   }
 
   return (
-    <Flex style={{ display: "flex", flexDirection: "row" }}>
-      <ActionIcon.Group
-        // size="xl"
-        variant="light"
-        // color={warnaIkon}
-        // onClick={() => {
-        //   notifications.show({
-        //     id: mode,
-        //     title: "test",
-        //     message: "test",
-        //     autoClose: 2000,
-        //   });
-        // }}
-      >
-        {ikon}
-      </ActionIcon.Group>
-    </Flex>
+    <div>
+      {ikon}
+    </div>
   );
 };
 
@@ -86,21 +71,19 @@ const IkonLabel = ({
   warnaTeks = EWarna.TEKS,
 }: IkonLabelProps) => {
   return (
-    <Box>
-      <Flex gap={10} align="center">
+    <div className="basis-1/4">
+      <div className="flex flex-row justify-center">
         {renderIkon(mode, warnaIkon)}
-        <Text
+        <text
+          className="px-2"
           style={{
-            paddingTop: "0.3em",
             color: warnaTeks,
-            display: "flex",
-            flexDirection: "row",
           }}
         >
           {teks}
-        </Text>
-      </Flex>
-    </Box>
+        </text>
+      </div>
+    </div>
   );
 };
 

@@ -17,8 +17,8 @@
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noUnusedParameters": true, // diatur menjadi false untuk sementara untuk keperluan testing build production
+    "noFallthroughCasesInSwitch": true // diatur menjadi false untuk sementara untuk keperluan testing build production
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
