@@ -4,7 +4,7 @@ import GarisHorizontal from "../komponen/GarisHorizontal";
 import { EUkuran } from "../enum";
 
 const meta = {
-  title: "Surreal Ocean/Komponen/GarisHorizontal",
+  title: "Surreal Ocean/Komponen/Garis Horizontal",
   component: GarisHorizontal,
   tags: ["autodocs"],
   argTypes: {

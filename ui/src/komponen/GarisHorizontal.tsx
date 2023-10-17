@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { EUkuran, EWarna } from "../enum";
 import "../css/Global.css";
-import "../css/komponen/GarisHorizontal.css";
 import { GarisHorizontalProps } from "../props/GarisHorizontal.props";
 
 const GarisHorizontal = ({
@@ -21,9 +20,10 @@ const GarisHorizontal = ({
         scale: [0.1, 0.95, 1],
       }}
       transition={{ delay: 0.2, duration: 1.25 }}
+      className="flex justify-center"
     >
       <hr
-        className={["GarisHorizontal", `GarisHorizontal-${ukuran}`].join(" ")}
+        className="w-8/12"
         style={{
           // batasi tinggi garis horizontal antara 1 - 10
           height: tinggi > 10 ? 10 : tinggi < 1 ? 1 : tinggi,

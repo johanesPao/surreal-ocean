@@ -2,9 +2,9 @@ import { EWarna } from "../enum";
 import IkonLabel from "./IkonLabel";
 import { KontakProps } from "../props/Kontak.props";
 
-const Kontak = ({ data = [], bgKontak = EWarna.TEKS }: KontakProps) => {
+const Kontak = ({ data = [] }: KontakProps) => {
   return (
-    <div className="flex flex-row p-3" style={{ backgroundColor: bgKontak }}>
+    <div className="flex flex-row md:flex-row justify-center flex-wrap gap-2">
       {data.length > 0 &&
         data.map((kontak) => {
           return (

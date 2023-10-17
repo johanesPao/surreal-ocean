@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import TeksKetikan from "../komponen/TeksKetikan";
 
 const meta = {
-  title: "Surreal Ocean/Komponen/TeksKetikan",
+  title: "Surreal Ocean/Komponen/Teks Ketikan",
   component: TeksKetikan,
   tags: ["autodocs"],
   argTypes: {

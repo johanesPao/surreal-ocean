@@ -19,4 +19,5 @@ export interface HeaderProps {
    * props TeksKetikan
    */
   infoDeskripsi: TeksKetikanProps;
+  style?: React.CSSProperties
 }

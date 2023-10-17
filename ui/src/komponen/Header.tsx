@@ -1,9 +1,9 @@
 // Global css akan mendefinisikan global property seperti font-family
 import "../css/Global.css";
-import "../css/komponen/Header.css";
 
 import TeksKetikan from "./TeksKetikan";
 import { HeaderProps } from "../props/Header.props";
+import { EWarna } from "../enum";
 
 const defaultHeaderProps: HeaderProps = {
   nama: {
@@ -24,13 +24,13 @@ const Header = ({
 }: HeaderProps) => {
   return (
     <div className="kontainerHeader">
-      <div className={nama.className}>
+      <div className="flex text-md font-semibold justify-center">
         <TeksKetikan {...nama} />
       </div>
-      <div className={jabatan.className}>
+      <div className="flex text-sm font-mono font-extrabold justify-center">
         <TeksKetikan {...jabatan} />
       </div>
-      <div className={infoDeskripsi.className}>
+      <div className="md:flex text-xs font-mono justify-center text-center">
         <TeksKetikan {...infoDeskripsi} />
       </div>
     </div>

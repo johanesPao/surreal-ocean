@@ -43,3 +43,11 @@ export enum EModeKontak {
   DOCKER = "docker",
   GITHUB = "github",
 }
+
+export enum EModeBahasa {
+  TS = "typescript",
+  PYTHON = "python",
+  RUST = "rust",
+  JSON = "json",
+  SQL = "sql"
+}

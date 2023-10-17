@@ -21,28 +21,10 @@ import {
 } from "../props/TimerUmur.props";
 
 const defaultStyle = {
-  kontainer: {
-    width: "100%",
-    padding: "2em 0em 2em 0em",
-    display: "flex",
-    flexDirection: "row" as "row",
-    alignItems: "center",
-    justifyContent: "center",
-  },
   ikon: {
     width: 30,
     height: 30,
-    color: EWarna.TEKS,
-  },
-  teks: {
-    fontSize: "13px",
-    fontFamily: "Cornerstone",
-  },
-  kolon: {
-    padding: "0em 1em 0em 1em",
-    ukuran: {
-      fontSize: "20px",
-    },
+    color: EWarna.PRIMER,
   },
 };
 
@@ -91,8 +73,8 @@ const TimerUmur = ({
 
     return (
       <>
-        <div>
-          <div style={{ paddingBottom: "-1em" }}>
+        <div style={{ textAlign: 'center' }}>
+          <div className={`flex flex-shrink`} style={{ paddingBottom: "-1em" }}>
             {[...stringAngka].map((angka) => {
               switch (angka) {
                 case "1":
@@ -120,16 +102,15 @@ const TimerUmur = ({
           </div>
           <text
             style={{
-              ...defaultStyle.teks,
-              textAlign: "center",
-              marginBottom: "0em",
+              fontSize: "13px",
+              fontFamily: "Cornerstone",
             }}
           >
             {translasi(teks, bahasa)}
           </text>
         </div>
         {teks !== "detik" && (
-          <text style={{ ...defaultStyle.kolon.ukuran }}>:</text>
+          <text style={{ fontSize: "24px" }}>:</text>
         )}
       </>
     );
@@ -274,18 +255,18 @@ const TimerUmur = ({
   }, [tahun, bulan, hari]);
 
   return (
-    <div style={defaultStyle.kontainer}>
-      <div>
+    <>
+      <div className={`hidden md:flex flex-row gap-3`}>
         {Object.entries(waktu).map((itemWaktu) =>
           renderIkonAngka(itemWaktu[1], itemWaktu[0])
         )}
       </div>
-      <div>
+      <div className={`md:hidden flex flex-row`}>
         {Object.entries(waktu).map((itemWaktu) =>
           renderTimerSederhana(itemWaktu[1], itemWaktu[0])
         )}
       </div>
-    </div>
+    </>
   );
 };
 
