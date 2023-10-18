@@ -181,7 +181,6 @@ const TimerUmur = ({
         bulan - 1,
         hari
       );
-      console.log(tglLahirTerakhir, tahun, bulan, hari);
       // rekonstruksi IUmur
       umur = {
         ...umur,

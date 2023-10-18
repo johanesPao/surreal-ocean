@@ -4,13 +4,12 @@ import {
   EModeBahasa,
   EWarna
 } from "../enum";
-import TeksKetikan from "../komponen/TeksKetikan";
 import { HeaderProps } from "../props/Header.props";
 import { KontakProps } from '../props/Kontak.props';
 import { RentangWaktuProps } from "../props/RentangWaktu.props";
 import '../css/Global.css';
 import { KodeProps } from "../props/Kode.props";
-import { IconActivityHeartbeat, IconBackpack, IconBellSchool, IconBook2, IconBooks, IconCode, IconDeviceAnalytics, IconEyeDollar, IconLamp2, IconSchool, IconShoppingCartQuestion, IconSortDescendingNumbers, IconTargetArrow, IconTerminal } from "@tabler/icons-react";
+import { IconActivityHeartbeat, IconBackpack, IconBellSchool, IconBooks, IconDeviceAnalytics, IconSchool, IconShoppingCartQuestion, IconSortDescendingNumbers, IconTargetArrow, IconTerminal } from "@tabler/icons-react";
 
 const LazyHeader = React.lazy(() => import("../komponen/Header"));
 const LazyTimer = React.lazy(() => import("../komponen/TimerUmur"));
@@ -44,8 +43,6 @@ const CV = () => {
       kecepatanTulis: 20,
     },
   };
-
-  const IkonPendidikan = <IconBook2 className="text-primer-200" />;
 
   const pendidikanArgs: RentangWaktuProps = {
     indeksElemenAktif: 4,
@@ -215,35 +212,6 @@ WHERE
           <LazyKode {...kodeArgs} />
         </div>
       </Suspense>
-      {/* <div className="curr-vitae-bagian-konten flex flex-col" style={{ padding: "2em 5em 2em 5em", marginTop: "380px" }}>
-        <Suspense fallback={<div>Loading...</div>}>
-          <div style={{ padding: "0em 0em", width: "1000px" }}>
-            <LazyRentangWaktu {...pendidikanArgs} />
-          </div>
-          <div style={{ padding: "0em 0em" }}>
-            <LazyRentangWaktu {...pendidikanArgs} />
-          </div>
-          <div style={{ padding: "0em 0em" }}>
-            <LazyRentangWaktu {...pendidikanArgs} />
-          </div>
-          <div style={{ padding: "0em 0em" }}>
-            <LazyRentangWaktu {...pendidikanArgs} />
-          </div>
-          <div style={{ padding: "0em 0em" }}>
-            <LazyRentangWaktu {...pendidikanArgs} />
-          </div>
-          <div style={{ padding: "0em 0em" }}>
-            <LazyRentangWaktu {...pendidikanArgs} />
-          </div>
-          <div style={{ padding: "0em 0em" }}>
-            <LazyRentangWaktu {...pendidikanArgs} />
-          </div>
-          <div style={{ padding: "2em 0em" }}>
-            <LazyKode {...kodeArgs} />
-          </div>
-        </Suspense>
-      </div> */}
-      {/* </div> */}
     </>
   );
 };

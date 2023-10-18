@@ -1,6 +1,6 @@
-import { IconBrandGithub, IconDots } from "@tabler/icons-react"
 import { RentangWaktuItemProps } from "../props/RentangWaktuItem.props"
 import { EWarna } from "../enum"
+import { IconDots } from "@tabler/icons-react";
 
 export const RentangWaktuItem = ({
     waktu,

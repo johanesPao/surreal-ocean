@@ -3,7 +3,6 @@ import "../css/Global.css";
 
 import TeksKetikan from "./TeksKetikan";
 import { HeaderProps } from "../props/Header.props";
-import { EWarna } from "../enum";
 
 const defaultHeaderProps: HeaderProps = {
   nama: {

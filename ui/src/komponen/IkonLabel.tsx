@@ -15,14 +15,6 @@ import { EModeKontak, EWarna } from "../enum";
 import { IkonLabelProps, ModeKontak } from "../props/IkonLabel.props";
 
 const renderIkon = (mode: ModeKontak, warnaIkon: string) => {
-  // const notifikasi = () => {
-  //   notifications.show({
-  //     title: "test",
-  //     message: "test",
-  //     autoClose: 2000,
-  //   });
-  // };
-
   let ikon: JSX.Element = <></>;
   switch (EModeKontak[mode]) {
     case EModeKontak.EMAIL:

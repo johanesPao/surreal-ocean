@@ -18,9 +18,10 @@ export const Demo: Story = {
     args: {
         waktu: 'Februari 22, 2023',
         judul: 'SMA Regina Pacis',
+        posisi: '',
         konten: 'Lorem ipsum dolor sit amet',
         ikon: <IconBrandOffice color={EWarna.TEKS} />,
-        warnaIkon: EWarna.PRIMER,
-        warnaGaris: EWarna.TEKS
+        warnaIkonDot: EWarna.PRIMER,
+        temaBgIkonDanGaris: "terang"
     }
 }

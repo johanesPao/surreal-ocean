@@ -1,4 +1,3 @@
-import { EWarna } from "../enum";
 import IkonLabel from "./IkonLabel";
 import { KontakProps } from "../props/Kontak.props";
 

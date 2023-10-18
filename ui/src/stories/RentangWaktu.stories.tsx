@@ -23,6 +23,7 @@ const defaultArgs: RentangWaktuProps = {
       konten: (
         <TeksKetikan teks="Masa - masa masih ababil dan sangat bocah" />
       ),
+      posisi: ''
     },
     {
       waktu: "1997 - 2000",
@@ -30,6 +31,7 @@ const defaultArgs: RentangWaktuProps = {
       konten: (
         <TeksKetikan teks="Mencari jati diri dan tidak menemukannya" />
       ),
+      posisi: ''
     },
     {
       waktu: "2000 - 2003",
@@ -37,6 +39,7 @@ const defaultArgs: RentangWaktuProps = {
       konten: (
         <TeksKetikan teks="Masa - masa jahiliah yang dipenuhi dengan madol, bilyar dan warnet" />
       ),
+      posisi: ''
     },
     {
       waktu: "2003 - 2009",
@@ -44,6 +47,7 @@ const defaultArgs: RentangWaktuProps = {
       konten: (
         <TeksKetikan teks="Bertanya - tanya kenapa saya bisa masuk kesana dan kenapa Ekonomi?" />
       ),
+      posisi: ''
     },
     {
       waktu: "2009 - Sekarang",
@@ -51,6 +55,7 @@ const defaultArgs: RentangWaktuProps = {
       konten: (
         <TeksKetikan teks="Terus belajar dan belajar untuk aktualisasi diri" />
       ),
+      posisi: ''
     },
   ],
 };
