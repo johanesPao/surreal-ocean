@@ -6,6 +6,11 @@ RUN apk update && apk upgrade
 RUN apk add nodejs npm
 ENV FOLDER /ui
 ENV FOLDER_BUILD /dist
+# Penambahan env variabel untuk sementara
+# Nantinya env akan diload dari env repository
+# yang akan di-inject dalam CI/CD dan build release
+# docker
+ENV VITE_NAMA_SITUS "Surreal Ocean"
 WORKDIR ${FOLDER}
 COPY package*.json ${FOLDER}
 RUN npm install
