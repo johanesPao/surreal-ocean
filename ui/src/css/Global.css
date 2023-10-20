@@ -1,8 +1,8 @@
 @import url('../assets/fonts/fonts.css');
 
 :root {
-  --warna-teks-dasar: #242424;
-  --warna-primer: #f6f1f1;
+  --warna-teks-dasar: #f6f1f1;
+  --warna-primer: #242424;
   --warna-sekunder: #afd3e2;
   --warna-tersier: #19a7ce;
   --warna-kuartener: #146c94;

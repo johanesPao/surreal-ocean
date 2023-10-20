@@ -14,9 +14,16 @@ const Kode = ({ kode, bahasa }: KodeProps) => {
         Prism.highlightAll();
     }, []);
     return (
-        <pre style={{ margin: "0" }}>
-            <code className={`language-${bahasa}`}>{kode}</code>
-        </pre>
+        <div style={{ backgroundColor: '#1d2021' }}>
+            <pre className="overflow-auto" style={{ margin: "0", padding: "0" }}>
+                <div className="sticky bg-stone-900 top-0 left-0 right-0 px-4 rounded-full">
+                    <span className="text-teks font-mono text-xs">data_penjualan.sql</span>
+                </div>
+                <div className="relative top-0 left-0 pt-4 pb-4">
+                    <code className={`language-${bahasa}`}>{kode}</code>
+                </div>
+            </pre>
+        </div>
     )
 }
 

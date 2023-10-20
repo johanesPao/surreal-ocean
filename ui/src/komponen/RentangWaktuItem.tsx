@@ -30,10 +30,10 @@ export const RentangWaktuItem = ({
                     </div>
                 </div>
                 <div className={`pb-5 static border-l-2 px-9 py-0 flex flex-col overflow-clip ${dotted && `border-dotted`} ${varianGaris[temaBgIkonDanGaris]}`}>
-                    <text className="text-teks-400 text-sm font-mono">{waktu}</text>
-                    <text className="font-bold font-mono text-lg">{posisi}</text>
-                    <text className="text-teks-500 font-mono text-sm">{judul}</text>
-                    <text className="font-mono text-sm">{konten}</text>
+                    <span className="text-teks-400 text-sm font-mono">{waktu}</span>
+                    <span className="font-bold font-mono text-lg">{posisi}</span>
+                    <span className="text-teks-500 font-mono text-sm">{judul}</span>
+                    <span className="font-mono text-sm">{konten}</span>
                 </div>
             </div>
         </div>

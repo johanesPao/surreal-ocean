@@ -5,9 +5,10 @@ const Kontak = ({ data = [] }: KontakProps) => {
   return (
     <div className="flex flex-row md:flex-row justify-center flex-wrap gap-2">
       {data.length > 0 &&
-        data.map((kontak) => {
+        data.map((kontak, indeks) => {
           return (
             <IkonLabel
+              key={indeks}
               mode={kontak.mode}
               teks={kontak.teks}
               warnaIkon={kontak.warnaIkon}

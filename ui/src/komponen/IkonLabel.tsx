@@ -66,14 +66,14 @@ const IkonLabel = ({
     <div className="shrink-0">
       <div className="flex flex-row justify-center gap-1 items-end">
         {renderIkon(mode, warnaIkon)}
-        <text
+        <span
           className="text-sm"
           style={{
             color: warnaTeks,
           }}
         >
           {teks}
-        </text>
+        </span>
       </div>
     </div>
   );

@@ -22,7 +22,7 @@ const Header = ({
   infoDeskripsi = defaultHeaderProps.infoDeskripsi,
 }: HeaderProps) => {
   return (
-    <div className="kontainerHeader">
+    <div className="">
       <div className="flex text-md font-semibold justify-center">
         <TeksKetikan {...nama} />
       </div>

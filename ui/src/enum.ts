@@ -5,8 +5,8 @@ export enum EUkuran {
 }
 
 export enum EWarna {
-  TEKS = "#242424",
-  PRIMER = "#F6F1F1",
+  TEKS = "#F6F1F1",
+  PRIMER = "#242424",
   SEKUNDER = "#AFD3E2",
   TERSIER = "#19A7CE",
   KUARTENER = "#146C94",

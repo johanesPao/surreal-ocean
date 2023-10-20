@@ -19,12 +19,13 @@ import {
   TimerUmurProps,
   bahasaTimerUmur,
 } from "../props/TimerUmur.props";
+import React from "react";
 
 const defaultStyle = {
   ikon: {
     width: 30,
     height: 30,
-    color: EWarna.PRIMER,
+    color: EWarna.TEKS,
   },
 };
 
@@ -72,47 +73,47 @@ const TimerUmur = ({
     const stringAngka = padStringAngka(angka);
 
     return (
-      <>
+      <React.Fragment key={teks}>
         <div style={{ textAlign: 'center' }}>
           <div className={`flex flex-shrink`} style={{ paddingBottom: "-1em" }}>
-            {[...stringAngka].map((angka) => {
+            {[...stringAngka].map((angka, indeks) => {
               switch (angka) {
                 case "1":
-                  return <IconHexagon1Filled style={defaultStyle.ikon} />;
+                  return <IconHexagon1Filled style={defaultStyle.ikon} key={`${teks}${indeks}`} />;
                 case "2":
-                  return <IconHexagonNumber2 style={defaultStyle.ikon} />;
+                  return <IconHexagonNumber2 style={defaultStyle.ikon} key={`${teks}${indeks}`} />;
                 case "3":
-                  return <IconHexagon3Filled style={defaultStyle.ikon} />;
+                  return <IconHexagon3Filled style={defaultStyle.ikon} key={`${teks}${indeks}`} />;
                 case "4":
-                  return <IconHexagonNumber4 style={defaultStyle.ikon} />;
+                  return <IconHexagonNumber4 style={defaultStyle.ikon} key={`${teks}${indeks}`} />;
                 case "5":
-                  return <IconHexagon5Filled style={defaultStyle.ikon} />;
+                  return <IconHexagon5Filled style={defaultStyle.ikon} key={`${teks}${indeks}`} />;
                 case "6":
-                  return <IconHexagonNumber6 style={defaultStyle.ikon} />;
+                  return <IconHexagonNumber6 style={defaultStyle.ikon} key={`${teks}${indeks}`} />;
                 case "7":
-                  return <IconHexagon7Filled style={defaultStyle.ikon} />;
+                  return <IconHexagon7Filled style={defaultStyle.ikon} key={`${teks}${indeks}`} />;
                 case "8":
-                  return <IconHexagonNumber8 style={defaultStyle.ikon} />;
+                  return <IconHexagonNumber8 style={defaultStyle.ikon} key={`${teks}${indeks}`} />;
                 case "9":
-                  return <IconHexagon9Filled style={defaultStyle.ikon} />;
+                  return <IconHexagon9Filled style={defaultStyle.ikon} key={`${teks}${indeks}`} />;
                 default:
-                  return <IconHexagonNumber0 style={defaultStyle.ikon} />;
+                  return <IconHexagonNumber0 style={defaultStyle.ikon} key={`${teks}${indeks}`} />;
               }
             })}
           </div>
-          <text
+          <span
             style={{
               fontSize: "13px",
               fontFamily: "Cornerstone",
             }}
           >
             {translasi(teks, bahasa)}
-          </text>
+          </span>
         </div>
         {teks !== "detik" && (
-          <text style={{ fontSize: "24px" }}>:</text>
+          <span style={{ fontSize: "24px" }}>:</span>
         )}
-      </>
+      </React.Fragment>
     );
   };
 
@@ -121,10 +122,10 @@ const TimerUmur = ({
     const stringAngka = padStringAngka(angka);
 
     return (
-      <>
+      <React.Fragment key={teks}>
         {stringAngka}
-        {teks !== "detik" && ` : `}
-      </>
+        {teks !== "detik" && ' : '}
+      </React.Fragment>
     );
   };
 
@@ -260,7 +261,7 @@ const TimerUmur = ({
           renderIkonAngka(itemWaktu[1], itemWaktu[0])
         )}
       </div>
-      <div className={`md:hidden flex flex-row`}>
+      <div className={`md:hidden flex flex-row flex-shrink-0`}>
         {Object.entries(waktu).map((itemWaktu) =>
           renderTimerSederhana(itemWaktu[1], itemWaktu[0])
         )}
