@@ -1,8 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
-import React, { Suspense } from "react";
 import {
-  EModeBahasa,
-  EWarna
+  EModeBahasa
 } from "../enum";
 import { HeaderProps } from "../props/Header.props";
 import { KontakProps } from '../props/Kontak.props';
