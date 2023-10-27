@@ -51,3 +51,9 @@ export enum EModeBahasa {
   JSON = "json",
   SQL = "sql"
 }
+
+export enum EResponGitHub {
+  GITHUB_EVENT,
+  GITHUB_NOT_FOUND,
+  GITHUB_FORMAT_UNKNOWN
+}

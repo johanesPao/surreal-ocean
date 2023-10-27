@@ -252,7 +252,7 @@ const TimerUmur = ({
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [tahun, bulan, hari]);
+  }, []);
 
   return (
     <>

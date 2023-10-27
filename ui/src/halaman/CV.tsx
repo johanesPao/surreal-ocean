@@ -15,6 +15,7 @@ import Kontak from "../komponen/Kontak";
 import RentangWaktu from "../komponen/RentangWaktu";
 import Kode from "../komponen/Kode";
 import Footer from '../komponen/Footer';
+import Proyek from "../komponen/Proyek";
 
 const CV = () => {
   const headerArgs: HeaderProps = {
@@ -193,7 +194,10 @@ WHERE
       <div className="px-10 md:px-32 lg:px-56 xl:px-72 py-7 flex flex-col font-mono">
         <RentangWaktu {...pekerjaanArgs} />
       </div>
-      {/* div bgcolor diset sesuai dengan tema background prism gruvbox untuk mendapatkan efek meluas*/}
+      <div className="px-10 md:px-32 lg:px-56 xl:px-72 py-7 flex flex-col font-mono">
+        <Proyek repo="surreal-ocean" />
+      </div>
+      {/* div bgcolor diset sesuai dengan tema background prism gruvbox untuk mendapatkan efek meluas */}
       <div className="bg-[#1d2021] px-10 md:px-32 lg:px-56 xl:px-72 py-7 flex flex-col font-mono">
         <Kode {...kodeArgs} />
       </div>
