@@ -1,7 +1,13 @@
-name: "Chromatic"
+name: "Build dan Release Storybook Surreal Ocean"
 on:
+  # Workflow di-trigger saat push ke branch dev
+  # dan terdapat perubahan pada ui/src/stories saja
+  # atau perubahan pada file workflow ini sendiri
   push:
     branches: dev
+    paths:
+      - "ui/src/stories/**"
+      - ".github/workflows/build-ui.yml"
 defaults:
   run:
     working-directory: ui

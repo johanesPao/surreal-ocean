@@ -1,11 +1,18 @@
 name: Build React UI - Surreal Ocean
 on:
+  # Workflow di-trigger saat push ke branch dev
+  # dan terdapat perubahan pada ui/ saja
+  # atau perubahan pada file workflow ini sendiri
+  # namun tidak saat terjadi perubahan pada
+  # ui/.storybook atau ui/src/stories
   push:
     branches:
       - dev
     paths:
       - "ui/**"
       - ".github/workflows/build-ui.yml"
+      - "!ui/.storybook/**"
+      - "!ui/src/stories/**"
 jobs:
   build-ui-surreal-ocean:
     runs-on: ubuntu-latest
