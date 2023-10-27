@@ -5,6 +5,7 @@ on:
       - dev
     paths:
       - "ui/**"
+      - ".github/workflows/build-ui.yml"
 jobs:
   build-ui-surreal-ocean:
     runs-on: ubuntu-latest
