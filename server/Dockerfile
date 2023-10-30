@@ -4,8 +4,8 @@
 FROM alpine:latest as build-rahasia
 
 # Menulis key dan crt ke folder pada build-rahasia
-RUN echo "${SSL_KEY}" | base64 --decode > /tmp/aws-surreal-ocean-priv.key
-RUN echo "${SSL_CERT}" | base64 --decode > /tmp/aws-surreal-ocean.crt
+RUN echo "${SSL_KEY}" | base64 -d > /tmp/aws-surreal-ocean-priv.key
+RUN echo "${SSL_CERT}" | base64 -d > /tmp/aws-surreal-ocean.crt
 
 # Stage akhir build nginx dengan konfigurasi dan key cert rahasia dari build-rahasia
 FROM nginx:alpine-slim
