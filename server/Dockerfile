@@ -4,8 +4,8 @@
 FROM scratch as build-rahasia
 
 # Menulis key dan crt ke folder pada build-rahasia
-RUN --mount=type=secret,id=SSL_KEY echo -e "${SSL_KEY}" > /tmp/aws-surreal-ocean-priv.key
-RUN --mount=type=secret,id=SSL_CERT echo -e "${SSL_CERT}" > /tmp/aws-surreal-ocean.crt
+RUN --mount=type=secret,id=SSL_KEY echo "${SSL_KEY}" | base64 --decode > /tmp/aws-surreal-ocean-priv.key
+RUN --mount=type=secret,id=SSL_CERT echo "${SSL_CERT}" | base64 --decode > /tmp/aws-surreal-ocean.crt
 
 # Stage akhir build nginx dengan konfigurasi dan key cert rahasia dari build-rahasia
 FROM nginx:alpine-slim
