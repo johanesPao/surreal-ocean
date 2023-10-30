@@ -18,3 +18,4 @@ RUN npm run build
 FROM alpine AS production-ui
 WORKDIR /ui
 COPY --from=build-ui /ui/dist .
+CMD ["tail", "-f", "/dev/null"]
