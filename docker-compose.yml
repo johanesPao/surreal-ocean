@@ -3,9 +3,11 @@ version: '3'
 services:
 
   ui:
+    container_name: surreal-ocean-ui
     image: j0hanespao/surreal-ocean-ui:latest
 
   nginx-server:
+    container_name: surreal-ocean-nginx
     image: j0hanespao/surreal-ocean-nginx:latest
     ports:
       - "443:443"
