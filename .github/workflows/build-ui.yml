@@ -23,7 +23,7 @@ jobs:
         id: metadata
         uses: docker/metadata-action@v5
         with:
-          images: ${{ secrets.UI_CONTAINER_IMAGE }}
+          images: j0hanespao/surreal-ocean-ui
           tags: |
             type=semver,pattern={{version}},value=v1.0.0
       - name: Login ke DockerHub

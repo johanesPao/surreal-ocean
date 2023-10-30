@@ -11,7 +11,7 @@ RUN apk add nodejs npm
 WORKDIR /ui
 COPY package*.json /ui
 RUN npm install
-COPY . .
+COPY . ${FOLDER}
 RUN npm run build
 
 # STAGE 2: Production Image
