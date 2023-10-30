@@ -4,7 +4,11 @@ services:
 
   ui:
     image: j0hanespao/surreal-ocean-ui:latest
+    depends_on:
+      - nginx
     container_name: surreal-ocean-ui
+    volumes:
+    - ui_files:/ui
 
   nginx-server:
     image: nginx:latest
@@ -14,7 +18,7 @@ services:
       - "80:80"
     restart: unless-stopped
     volumes:
-      - ./ui:/usr/share/nginx/html
+      - ui_files:/ui
       - ./nginx-conf/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./cert/aws-surreal-ocean.crt:/etc/ssl/certs/aws-surreal-ocean.crt
       - ./cert/aws-surreal-ocean-priv.key:/etc/ssl/private/aws-surreal-ocean-priv.key

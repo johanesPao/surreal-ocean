@@ -18,3 +18,5 @@ RUN npm run build
 FROM scratch AS production-ui
 WORKDIR /ui
 COPY --from=build-ui /ui/dist .
+
+ENTRYPOINT "cp -RT /ui /ui"
