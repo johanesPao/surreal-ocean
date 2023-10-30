@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 # escape=`
 # Menggunakan scratch image untuk build private key dan ssl cert
-FROM scratch as build-rahasia
+FROM alpine:latest as build-rahasia
 
 # Menulis key dan crt ke folder pada build-rahasia
 RUN echo "${SSL_KEY}" | base64 --decode > /tmp/aws-surreal-ocean-priv.key
