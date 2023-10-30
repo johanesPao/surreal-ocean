@@ -18,7 +18,7 @@ jobs:
         id: metadata
         uses: docker/metadata-action@v5
         with:
-          images: j0hanespao/surreal-ocean-nginx
+          images: ${{ secrets.NGINX_CONTAINER_IMAGE }}
           tags: |
             type=semver,pattern={{version}},value=v1.0.0
       - name: Login ke DockerHub
@@ -35,4 +35,8 @@ jobs:
           labels: ${{ steps.metadata.outputs.labels }}
           secrets: |
             SSL_KEY=${{ secrets.SSL_KEY }}
+            SSL_KEY_FILE=${{ secrets.SSL_KEY_FILE }}
+            SSL_KEY_PATH=${{ secrets.SSL_KEY_PATH }}
             SSL_CERT=${{ secrets.SSL_CERT }}
+            SSL_CERT_FILE=${{ secrets.SSL_CERT_FILE }}
+            SSL_CERT_PATH=${{ secrets.SSL_CERT_PATH }}
