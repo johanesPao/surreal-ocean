@@ -22,7 +22,7 @@ COPY --from=build-rahasia /tmp/aws-surreal-ocean-priv.key /etc/ssl/private/aws-s
 COPY --from=build-rahasia /tmp/aws-surreal-ocean.crt /etc/ssl/certs/aws-surreal-ocean.crt
 
 # Konfigurasi Nginx
-COPY nginx.conf /etc/nginx/nginx.conf:ro
+COPY ./nginx.conf /etc/nginx/nginx.conf:ro
 
 # Jalankan Nginx
 CMD ["nginx", "-g", "daemon off;"]
