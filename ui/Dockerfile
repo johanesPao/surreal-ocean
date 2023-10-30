@@ -15,6 +15,6 @@ COPY . .
 RUN npm run build
 
 # STAGE 2: Production Image
-FROM alpine AS production-ui
+FROM scratch AS production-ui
 WORKDIR /ui
 COPY --from=build-ui /ui/dist .
