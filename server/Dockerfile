@@ -10,8 +10,8 @@ ARG SSL_KEY_FILE
 ARG SSL_CERT_FILE
 
 # Menulis key dan crt ke folder pada build-rahasia
-RUN echo "${SSL_KEY}" | base64 -d > /tmp/SSL_KEY_FILE
-RUN echo "${SSL_CERT}" | base64 -d > /tmp/SSL_CERT_FILE
+RUN echo "${SSL_KEY}" | base64 -d > /tmp/"${SSL_KEY_FILE}"
+RUN echo "${SSL_CERT}" | base64 -d > /tmp/"{SSL_CERT_FILE}"
 
 # Stage akhir build nginx dengan konfigurasi dan key cert rahasia dari build-rahasia
 FROM nginx:alpine-slim
