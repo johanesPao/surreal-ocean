@@ -9,9 +9,9 @@ RUN apk add nodejs npm
 # yang akan di-inject dalam CI/CD dan build release
 # docker
 WORKDIR /ui
-COPY package*.json /ui
+COPY package*.json .
 RUN npm install
-COPY . ${FOLDER}
+COPY . .
 RUN npm run build
 
 # STAGE 2: Production Image
