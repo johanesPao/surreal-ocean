@@ -6,8 +6,6 @@ FROM alpine:latest as build-rahasia
 # Menangkap ARG kedalam ENV
 ARG SSL_KEY
 ARG SSL_CERT
-ENV SSL_KEY SSL_KEY
-ENV SSL_CERT SSL_CERT
 
 # Menulis key dan crt ke folder pada build-rahasia
 RUN echo "${SSL_KEY}" | base64 -d > /tmp/aws-surreal-ocean-priv.key
