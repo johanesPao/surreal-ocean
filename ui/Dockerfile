@@ -17,4 +17,4 @@ RUN npm run build
 # STAGE 2: Production Image
 FROM scratch AS production-ui
 WORKDIR /ui
-COPY --from=build-ui /ui/dist /ui
+COPY --from=build-ui /ui/dist .
