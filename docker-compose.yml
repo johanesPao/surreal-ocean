@@ -2,13 +2,11 @@ version: '3'
 
 services:
 
-  ui:
+  # Pull image react statis dari dockerhub untuk frontend
+  surreal-ocean-ui:
     image: j0hanespao/surreal-ocean-ui:latest
-    ports:
-      "8000:80"
-    container_name: sureal-ocean-ui
+    container_name: surreal-ocean-ui
     restart: unless-stopped
-    networks: surreal-ocean-networks
 
   # api:
   #   image: j0hanespao/surreal-ocean-api:latest
@@ -18,16 +16,14 @@ services:
   #   restart: unless-stopped
   #   networks: surreal-ocean-networks
 
-  reverse-proxy:
-    image: nginx:alpine-slim
+  # Pull image nginx:alpine-slim dan lakukan kostumisasi pada build
+  # menggunakan Dockerfile
+  surreal-ocean-proxy:
+    # Build image nginx sebagai reverse proxy dari Dockerfile
+    build:
+      context: .
+    # Nginx reverse proxy mendengarkan port 80 dan 443 pada host mesin
     ports:
       - "80:80"
+      - "443:443"
     container_name: surreal-ocean-proxy
-    volumes:
-      - /conf:/etc/nginx
-      - /cert:/etc/nginx/certs
-      - /key:/etc/nginx/private
-    networks: surreal-ocean-networks
-
-networks: 
-  surreal-ocean-networks: {}
