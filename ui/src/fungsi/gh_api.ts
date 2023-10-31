@@ -2,7 +2,8 @@ import { EResponGitHub } from "../enum";
 import { GitHubRespon } from "../types";
 
 export const tarikEventRepo = async (user: string, repo: string, token: string) => {
-    const respon = await fetch(`${import.meta.env.VITE_LOKAL_API}/api/gh/${user}/${repo}/event`, {
+    const APIEndpoint = import.meta.env.DEV ? import.meta.env.VITE_DEV_API : import.meta.env.VITE_PROD_API;
+    const respon = await fetch(`${APIEndpoint}/api/gh/${user}/${repo}/event`, {
         method: 'GET',
         headers: {
             "Authorization": `${token}`,

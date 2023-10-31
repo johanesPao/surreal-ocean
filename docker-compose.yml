@@ -4,20 +4,30 @@ services:
 
   ui:
     image: j0hanespao/surreal-ocean-ui:latest
-    depends_on:
-      - nginx
-    container_name: surreal-ocean-ui
-    restart: unless-stopped
-    volumes:
-    - surreal-ocean-volume:/ui
-
-  nginx-server:
-    image: j0hanespao/surreal-ocean-nginx:latest
-    container_name: surreal-ocean-nginx
     ports:
-      - "443:443"
-      - "80:80"
+      "8000:80"
+    container_name: sureal-ocean-ui
     restart: unless-stopped
+    networks: surreal-ocean-networks
 
-volumes:
-  surreal-ocean-volume:
+  # api:
+  #   image: j0hanespao/surreal-ocean-api:latest
+  #   ports:
+  #     "11:80"
+  #   container_name: surreal-ocean-api
+  #   restart: unless-stopped
+  #   networks: surreal-ocean-networks
+
+  reverse-proxy:
+    image: nginx:alpine-slim
+    ports:
+      - "80:80"
+    container_name: surreal-ocean-proxy
+    volumes:
+      - /conf:/etc/nginx
+      - /cert:/etc/nginx/certs
+      - /key:/etc/nginx/private
+    networks: surreal-ocean-networks
+
+networks: 
+  surreal-ocean-networks: {}
