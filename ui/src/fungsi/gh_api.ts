@@ -3,7 +3,7 @@ import { GitHubRespon } from "../types";
 
 export const tarikEventRepo = async (user: string, repo: string, token: string) => {
     const APIEndpoint = import.meta.env.DEV ? import.meta.env.VITE_DEV_API : import.meta.env.VITE_PROD_API;
-    const respon = await fetch(`${APIEndpoint}/api/gh/${user}/${repo}/event`, {
+    const respon = await fetch(`${APIEndpoint}/gh/${user}/${repo}/event`, {
         method: 'GET',
         headers: {
             "Authorization": `${token}`,
