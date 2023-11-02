@@ -17,6 +17,8 @@ services:
       - .env
     container_name: surreal-ocean-api
     restart: unless-stopped
+    ports:
+      - 81:5000
 
   # Pull image nginx:alpine-slim
   surreal-ocean-proxy:
