@@ -19,7 +19,7 @@ jobs:
         id: metadata
         uses: docker/metadata-action@v5
         with:
-          images: johanespao/surreal-ocean-api
+          images: j0hanespao/surreal-ocean-api
           tags: |
             type=semver,pattern={{version}},value=v1.0.0
       - name: Login ke DockerHub
