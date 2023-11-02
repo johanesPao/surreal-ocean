@@ -9,7 +9,7 @@ services:
     restart: unless-stopped
 
   # Pull image actix-web api dari dockerhub untuk api endpoint
-  api:
+  surreal-ocean-api:
     image: j0hanespao/surreal-ocean-api:latest
     # env file tidak ada dalam git repository tapi tersedia
     # di folder yang sama dengan docker-compose pada server
