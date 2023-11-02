@@ -5,6 +5,7 @@ export const tarikEventRepo = async (user: string, repo: string, token: string) 
     const APIEndpoint = import.meta.env.DEV ? import.meta.env.VITE_DEV_API : import.meta.env.VITE_PROD_API;
     const respon = await fetch(`${APIEndpoint}/gh/${user}/${repo}/event`, {
         method: 'GET',
+        redirect: "manual",
         headers: {
             "Authorization": `${token}`,
         }
