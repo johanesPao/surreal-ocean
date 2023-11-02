@@ -40,7 +40,7 @@ async fn main() -> std::io::Result<()> {
             .default_service(web::route().to(tidak_ditemukan))
             .wrap(actix_web::middleware::Logger::default())
     })
-    .bind((konfigurasi.ENDPOINT_URL, konfigurasi.PORT))?
+    .bind((konfigurasi.API_ENDPOINT_URL, konfigurasi.API_PORT))?
     .run()
     .await
 }

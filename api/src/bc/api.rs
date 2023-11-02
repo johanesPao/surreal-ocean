@@ -11,5 +11,5 @@ pub async fn tarik_data_penjualan(id: web::Path<String>) -> HttpResponse {
 }
 
 pub fn konfigurasi(konfig: &mut web::ServiceConfig) {
-    konfig.service(web::scope("/api/bc").service(tarik_data_penjualan));
+    konfig.service(web::scope("/bc").service(tarik_data_penjualan));
 }

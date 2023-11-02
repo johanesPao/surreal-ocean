@@ -54,5 +54,5 @@ pub async fn get_repo_event(req: HttpRequest, path: web::Path<(String, String)>)
 }
 
 pub fn konfigurasi(konfig: &mut web::ServiceConfig) {
-    konfig.service(web::scope("/api/gh").service(get_repo_event));
+    konfig.service(web::scope("/gh").service(get_repo_event));
 }
