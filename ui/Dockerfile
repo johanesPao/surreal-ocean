@@ -5,7 +5,7 @@
 FROM node:slim AS build-image
 
 ARG VITE_NAMA_SITUS
-ENV VITE_NAMA_SITUS VITE_NAMA_SITUS
+ENV VITE_NAMA_SITUS=$VITE_NAMA_SITUS
 
 RUN --mount=type=secret,id=VITE_DEV_API export VITE_DEV_API=$(cat /run/secrets/VITE_DEV_API)
 RUN --mount=type=secret,id=VITE_PROD_API export VITE_PROD_API=$(cat /run/secrets/VITE_PROD_API)
