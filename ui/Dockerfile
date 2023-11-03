@@ -1,5 +1,4 @@
 # syntax=docker/dockerfile:1
-# escape=`
 
 # === STAGE 1: Build Image
 FROM node:slim AS build-image
@@ -7,10 +6,14 @@ FROM node:slim AS build-image
 ARG VITE_NAMA_SITUS
 ENV VITE_NAMA_SITUS=$VITE_NAMA_SITUS
 
-RUN --mount=type=secret,id=VITE_DEV_API export VITE_DEV_API=$(cat /run/secrets/VITE_DEV_API)
-RUN --mount=type=secret,id=VITE_PROD_API export VITE_PROD_API=$(cat /run/secrets/VITE_PROD_API)
-RUN --mount=type=secret,id=VITE_GH_USER export VITE_GH_USER=$(cat /run/secrets/VITE_GH_USER)
-RUN --mount=type=secret,id=VITE_GH_TOKEN export VITE_GH_TOKEN=$(cat /run/secrets/VITE_GH_TOKEN)
+RUN --mount=type=secret,id=VITE_DEV_API \
+    --mount=type=secret,id=VITE_PROD_API \
+    --mount=type=secret,id=VITE_GH_USER \
+    --mount=type=secret,id=VITE_GH_TOKEN \
+    export VITE_DEV_API=$(cat /run/secrets/VITE_DEV_API) && \
+    export VITE_PROD_API=$(cat /run/secrets/VITE_PROD_API) && \
+    export VITE_GH_USER=$(cat /run/secrets/VITE_GH_USER) && \
+    export VITE_GH_TOKEN=$(cat /run/secrets/VITE_GH_TOKEN)
 
 # Kopi package*.json ke dalam kontainer
 COPY package*.json .
