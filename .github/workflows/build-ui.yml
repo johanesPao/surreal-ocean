@@ -16,6 +16,7 @@ on:
 jobs:
   build-ui-surreal-ocean:
     runs-on: ubuntu-latest
+    environment: docker_image_deployment
     steps:
       - name: Checkout repositori GitHub
         uses: actions/checkout@v4
@@ -35,6 +36,13 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: ./ui
+          build-args: |
+            VITE_NAMA_SITUS=${{vars.VITE_NAMA_SITUS}}
+          secrets: |
+            VITE_DEV_API=${{secrets.VITE_DEV_API}}
+            VITE_PROD_API=${{secrets.VITE_PROD_API}}
+            VITE_GH_USER=${{secrets.VITE_GH_USER}}
+            VITE_GH_TOKEN=${{secrets.VITE_GH_TOKEN}}
           push: true
           tags: ${{ steps.metadata.outputs.tags }}
           labels: ${{ steps.metadata.outputs.labels }}
