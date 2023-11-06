@@ -7,13 +7,13 @@ on:
     branches: dev
     paths:
       - "ui/src/stories/**"
-      - ".github/workflows/build-ui.yml"
 defaults:
   run:
     working-directory: ui
 jobs:
   test-dan-deploy-storybook-ke-chromatic:
     runs-on: ubuntu-latest
+    environment: surreal_ocean_ui_stories_deployment
     steps:
       - uses: actions/checkout@v2
         with:
