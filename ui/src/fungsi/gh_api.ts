@@ -3,7 +3,8 @@ import { GitHubRespon } from "../types";
 
 export const tarikEventRepo = async (user: string, repo: string, token: string) => {
     const APIEndpoint = import.meta.env.DEV ? import.meta.env.VITE_DEV_API : import.meta.env.VITE_PROD_API;
-    const respon = await fetch(`${APIEndpoint}/gh/${user}/${repo}/event`, {
+    const APIUrl = `${APIEndpoint}/gh/${user}/${repo}/event`
+    const respon = await fetch(`${APIUrl}`, {
         method: 'GET',
         redirect: "manual",
         headers: {
@@ -16,7 +17,7 @@ export const tarikEventRepo = async (user: string, repo: string, token: string) 
         console.log(data);
         return data;
     } else {
-        throw new Error(`Gagal fetch data dari API. Status: ${respon.status}`)
+        return new Error(`Gagal fetch data dari ${APIUrl}. Status: ${respon.status}`)
     }
 }
 
