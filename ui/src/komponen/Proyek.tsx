@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { tarikEventRepo, typeGuardGitHubRespon } from "../fungsi/gh_api";
 import { EResponGitHub } from "../enum";
 import { GitHubEvent } from "../types";
-import { IconAccessible, IconCheck, IconForbid } from "@tabler/icons-react";
+import { IconCheck } from "@tabler/icons-react";
 
 const Proyek = ({ repo }: { repo: string }) => {
     const [data, setData] = useState<GitHubEvent | string>(""); // Assuming you've defined the Event type as shown before
@@ -54,14 +54,14 @@ const Proyek = ({ repo }: { repo: string }) => {
                                         <p>{data.public
                                             ? (
                                                 <div className="flex items-center gap-1 bg-green-200 rounded-xl text-slate-950 px-3 w-auto">
-                                                    <IconForbid size={12} />
+                                                    <IconCheck size={12} />
                                                     <span>
                                                         public
                                                     </span>
                                                 </div>
                                             )
                                             : (
-                                                <IconForbid />
+                                                <IconCheck />
                                             )}
                                         </p>
                                     </div>
