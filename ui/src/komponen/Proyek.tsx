@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { tarikEventRepo, typeGuardGitHubRespon } from "../fungsi/gh_api";
 import { EResponGitHub } from "../enum";
 import { GitHubEvent } from "../types";
-import { IconCheck } from "@tabler/icons-react";
 
 const Proyek = ({ repo }: { repo: string }) => {
     const [data, setData] = useState<GitHubEvent | string>(""); // Assuming you've defined the Event type as shown before
@@ -50,19 +49,13 @@ const Proyek = ({ repo }: { repo: string }) => {
                             <div className="flex p-5">
                                 <div className="flex flex-col">
                                     <div className="flex gap-2 items-baseline">
-                                        <p className="font-cornerstone text-lg">{data.repo.name}</p>
-                                        <p>{data.public
-                                            ? (
-                                                <div className="flex items-center gap-1 bg-green-200 rounded-xl text-slate-950 px-3 w-auto">
-                                                    <IconCheck size={12} />
-                                                    <span>
-                                                        public
-                                                    </span>
-                                                </div>
-                                            )
-                                            : (
-                                                <IconCheck />
-                                            )}
+                                        <p className="font-cornerstone text-lg w-full">{data.repo.name}</p>
+                                        <p>
+                                            <div className={`flex items-center gap-1 ${data.public ? `bg-green-300` : `bg-red-300`} rounded-lg text-slate-950 px-3 w-auto`}>
+                                                <span>
+                                                    {data.public ? `public` : `private`}
+                                                </span>
+                                            </div>
                                         </p>
                                     </div>
                                     <p>Latest commit on {(new Date(`${data.created_at}`)).toLocaleString()}</p>
