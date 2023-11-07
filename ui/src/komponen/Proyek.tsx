@@ -46,7 +46,7 @@ const Proyek = ({ repo }: { repo: string }) => {
                         ? <span>Terjadi kesalahan dalam fetching:<br /><span>{data}</span></span>
                         : (typeof data === 'object')
                         && (
-                            <div className="flex p-5">
+                            <div className="grow p-5">
                                 <div className="flex flex-col">
                                     <div className="flex gap-2 items-baseline">
                                         <p className="font-cornerstone text-lg w-full">{data.repo.name}</p>
