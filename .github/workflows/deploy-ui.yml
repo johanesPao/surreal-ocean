@@ -33,6 +33,7 @@ jobs:
       - name: Menuliskan file private key
         run: |
           echo "$AWS_B64_ENCODED_KEY" | base64 --decode > $AWS_KEY_FILE
+          chmod 600 $AWS_KEY_FILE
       - name: Login ke AWS
         run: |
           ssh -i $AWS_KEY_FILE $AWS_USER@$AWS_DOMAIN
