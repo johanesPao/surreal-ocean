@@ -1,19 +1,19 @@
 /* eslint-disable react-refresh/only-export-components */
-import {
-  EModeBahasa
-} from "../enum";
+// import {
+//   EModeBahasa
+// } from "../enum";
 import { HeaderProps } from "../props/Header.props";
 import { KontakProps } from '../props/Kontak.props';
 import { RentangWaktuProps } from "../props/RentangWaktu.props";
 import '../css/Global.css';
-import { KodeProps } from "../props/Kode.props";
+// import { KodeProps } from "../props/Kode.props";
 import { IconActivityHeartbeat, IconBackpack, IconBellSchool, IconBooks, IconDeviceAnalytics, IconSchool, IconShoppingCartQuestion, IconSortDescendingNumbers, IconTargetArrow, IconTerminal } from "@tabler/icons-react";
 
 import Header from "../komponen/Header";
 import TimerUmur from "../komponen/TimerUmur";
 import Kontak from "../komponen/Kontak";
 import RentangWaktu from "../komponen/RentangWaktu";
-import Kode from "../komponen/Kode";
+// import Kode from "../komponen/Kode";
 import Footer from '../komponen/Footer';
 import Proyek from "../komponen/Proyek";
 
@@ -182,24 +182,24 @@ const CV = () => {
     }
   ]
 
-  const kodeArgs: KodeProps = {
-    kode: `-- deklarasi dan set variabel
-DECLARE @PeriodeAwal AS NVARCHAR(10), @PeriodeAkhir AS NVARCHAR(10)
+  //   const kodeArgs: KodeProps = {
+  //     kode: `-- deklarasi dan set variabel
+  // DECLARE @PeriodeAwal AS NVARCHAR(10), @PeriodeAkhir AS NVARCHAR(10)
 
-SET @PeriodeAwal = '2023-01-01'
-SET @PeriodeAkhir = '2023-12-31';
+  // SET @PeriodeAwal = '2023-01-01'
+  // SET @PeriodeAkhir = '2023-12-31';
 
-SELECT DISTINCT
-        oriCode,
-        size,
-        SUM(Quantity) OVER(PARTITION BY oriCode) [kuantitas]
-FROM dummyTable
-WHERE
-        PostingDate >= @PeriodeAwal AND
-        PostingDate <= @PeriodeAKhir
-`,
-    bahasa: EModeBahasa.SQL
-  }
+  // SELECT DISTINCT
+  //         oriCode,
+  //         size,
+  //         SUM(Quantity) OVER(PARTITION BY oriCode) [kuantitas]
+  // FROM dummyTable
+  // WHERE
+  //         PostingDate >= @PeriodeAwal AND
+  //         PostingDate <= @PeriodeAKhir
+  // `,
+  //     bahasa: EModeBahasa.SQL
+  //   }
 
   return (
     <>
