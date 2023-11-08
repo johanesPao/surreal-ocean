@@ -34,10 +34,10 @@ jobs:
         run: |
           echo "$AWS_B64_ENCODED_KEY" | base64 --decode > $AWS_KEY_FILE
           chmod 600 $AWS_KEY_FILE
-      - name: Login ke AWS
-        run: |
-          ssh -i $AWS_KEY_FILE $AWS_USER@$AWS_DOMAIN
+      #- name: Login ke AWS
+      #  run: |
+      #    ssh -i $AWS_KEY_FILE $AWS_USER@$AWS_DOMAIN
       - name: Rebuild dan deploy ulang UI dengan latest tag
         run: |
-          sudo docker compose pull
-          sudo docker compose up -d --no-deps "$PRODUCTION_UI_SERVICE"
+          ssh -i $AWS_KEY_FILE $AWS_USER@$AWS_DOMAIN 'sudo docker compose pull'
+          ssh -i $AWS_KEY_FILE $AWS_USER@$AWS_DOMAIN 'sudo docker compose up -d --no-deps $PRODUCTION_UI_SERVICE'
