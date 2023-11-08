@@ -154,6 +154,34 @@ const CV = () => {
     },
   ];
 
+  const repoList = [
+    {
+      namaRepo: 'surreal-ocean',
+      deskripsi: `Surreal Ocean adalah aplikasi web based personal yang dibangun menggunakan Typescript (React) dan Rust (Actix-Web) yang dikontainerisasi ke dalam
+      image docker. Arsitektur halaman yang anda lihat saat ini merupakan arsitektur dari Surreal Ocean. Penamaan Surreal Ocean terinspirasi 
+      dari nama anak pertama.`,
+      fileWorkflows: [
+        "build-ui.yml",
+        "build-api.yml",
+        "deploy-ui.yml",
+        "deploy-api.yml"
+      ]
+    },
+    {
+      namaRepo: 'e-report',
+      deskripsi: `e-Report merupakan aplikasi untuk penarikan data dari sistem ERP Business Central. Aplikasi ini dibangun menggunakan Typescript (React) dan Rust (Tauri) 
+      dan direlease dalam bentuk msi installer, dmg, AppImage dan deb. Selain untuk penarikan data, e-Report juga dipergunakan untuk sistem pembuatan dan proses persetujuan
+      proposal pembukaan toko baru di PT Prestasi Retail Innovation. Saat ini, repository ini sudah tidak di-maintain dan aplikasi ini sudah di-porting ke dalam infrastruktur
+      internal PT Prestasi Retail Innovation dan di-maintain dalam repository internal.`,
+    },
+    {
+      namaRepo: 'undecided',
+      deskripsi: `Undecided merupakan aplikasi bot crypto yang didesain sedemikian rupa untuk melakukan pembukaan dan penutupan posisi long
+      atau short di Binance. Berbeda dengan bot pada umumnya yang memiliki fungsi built-in, baik analisa teknikal maupun strategi yang diterapkan
+      dalam logika perdagangan pada bot ini perlu dibuat sendiri oleh pengguna.`,
+    }
+  ]
+
   const kodeArgs: KodeProps = {
     kode: `-- deklarasi dan set variabel
 DECLARE @PeriodeAwal AS NVARCHAR(10), @PeriodeAkhir AS NVARCHAR(10)
@@ -194,13 +222,16 @@ WHERE
       <div className="px-10 md:px-32 lg:px-56 xl:px-72 py-7 flex flex-col font-mono">
         <RentangWaktu {...pekerjaanArgs} />
       </div>
-      <div className="px-10 md:px-32 lg:px-56 xl:px-72 py-7 flex flex-col font-mono">
-        <Proyek repo="surreal-ocean" />
+      <div className="px-10 md:px-32 lg:px-56 xl:px-72 py-7 flex flex-col gap-5 font-mono">
+        {repoList.map((repo) => (
+          <Proyek repo={repo.namaRepo} description={repo.deskripsi} workflows={repo.fileWorkflows} />
+        ))}
+        {/* <Proyek repo="surreal-ocean" /> */}
       </div>
       {/* div bgcolor diset sesuai dengan tema background prism gruvbox untuk mendapatkan efek meluas */}
-      <div className="bg-[#1d2021] px-10 md:px-32 lg:px-56 xl:px-72 py-7 flex flex-col font-mono">
+      {/* <div className="bg-[#1d2021] px-10 md:px-32 lg:px-56 xl:px-72 py-7 flex flex-col font-mono">
         <Kode {...kodeArgs} />
-      </div>
+      </div> */}
       <div className="px-10 md:px-32 lg:px-56 xl:px-72 py-7 flex flex-col font-mono">
         <Footer />
       </div>
