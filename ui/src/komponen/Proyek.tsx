@@ -3,7 +3,7 @@ import { tarikEventRepo, typeGuardGitHubRespon } from "../fungsi/gh_api";
 import { EResponGitHub } from "../enum";
 import { GitHubEvent } from "../types";
 
-const Proyek = ({ repo }: { repo: string }) => {
+const Proyek = ({ repo, description, workflows }: { repo: string, description?: string, workflows?: string[] }) => {
     const [data, setData] = useState<GitHubEvent | string>(""); // Assuming you've defined the Event type as shown before
     const [memuat, setMemuat] = useState(false);
     const [kesalahanFetching, setKesalahanFetching] = useState(false);
@@ -18,7 +18,7 @@ const Proyek = ({ repo }: { repo: string }) => {
             } else {
                 switch (typeGuardGitHubRespon(hasil)) {
                     case EResponGitHub.GITHUB_EVENT: {
-                        setData((hasil as GitHubEvent[])[0])
+                        setData((hasil as GitHubEvent[]).filter((githubEvent) => { return githubEvent.type === 'PushEvent' })[0])
                         break;
                     }
                     case EResponGitHub.GITHUB_NOT_FOUND: {
@@ -39,19 +39,19 @@ const Proyek = ({ repo }: { repo: string }) => {
 
     return (
         <>
-            <div className="flex bg-stone-900 text-xs p-0 rounded-2xl overflow-hidden h-auto">
+            <div className="flex bg-stone-900 text-xs p-5 rounded-2xl overflow-hidden h-auto">
                 {memuat
-                    ? <span>Memuat...</span>
+                    ? <span>Memuat data repository ${repo}...</span>
                     : (kesalahanFetching && (typeof data === 'string'))
                         ? <span>Terjadi kesalahan dalam fetching:<br /><span>{data}</span></span>
                         : (typeof data === 'object')
                         && (
-                            <div className="grow p-5">
+                            <div className="grow">
                                 <div className="flex flex-col">
                                     <div className="flex gap-2 items-baseline">
                                         <p className="font-cornerstone text-lg w-full">{data.repo.name}</p>
                                         <p>
-                                            <div className={`flex items-center gap-1 ${data.public ? `bg-green-300` : `bg-red-300`} rounded-lg text-slate-950 px-3 w-auto`}>
+                                            <div className={`flex items-center gap-1 ${data.public ? `bg-teks text-stone-900` : `bg-stone-900 text-teks border-teks border`} rounded-lg text-slate-950 px-3 w-auto`}>
                                                 <span>
                                                     {data.public ? `public` : `private`}
                                                 </span>
@@ -61,6 +61,25 @@ const Proyek = ({ repo }: { repo: string }) => {
                                     <p>Latest commit on {(new Date(`${data.created_at}`)).toLocaleString()}</p>
                                     <p>Commit message {data.payload.commits![0].message}</p>
                                     <p>Commit SHA {data.payload.commits![0].sha}</p>
+                                    {(description !== undefined && description !== "") && (
+                                        <div className="pt-3 text-sm text-clip">
+                                            {description}
+                                        </div>
+                                    )}
+                                    {workflows !== undefined && (workflows.length > 0 && (
+                                        <div className="pt-3 flex flex-col gap-2 items-end">
+                                            {
+                                                workflows.map((workflowFile) => (
+                                                    (
+                                                        <div className="w-auto" key={workflowFile}>
+                                                            <img src={`https://github.com/${import.meta.env.VITE_GH_USER}/${repo}/actions/workflows/${workflowFile}/badge.svg`} />
+                                                        </div>
+                                                    )
+                                                )
+                                                )
+                                            }
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
                         )
