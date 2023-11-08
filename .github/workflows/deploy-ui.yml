@@ -26,6 +26,7 @@ jobs:
     steps:
       - name: Menuliskan known_hosts pada workflow
         run: |
+          mkdir -p ~/.ssh/
           ssh-keygen -R $AWS_DOMAIN
           ssh-keyscan -H $AWS_DOMAIN >> ~/.ssh/known_hosts
       - name: Menuliskan file private key
