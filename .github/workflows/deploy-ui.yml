@@ -10,7 +10,7 @@ on:
       - main
     paths:
       - "ui/**"
-      - ".github/workflows/build-ui.yml"
+      - ".github/workflows/deploy-ui.yml"
       - "!ui/.storybook/**"
       - "!ui/src/stories/**"
 jobs:
