@@ -1,0 +1,30 @@
+name: "Build dan Release Storybook Surreal Ocean"
+on:
+  # Workflow di-trigger saat push ke branch dev
+  # dan terdapat perubahan pada ui/src/stories saja
+  # atau perubahan pada file workflow ini sendiri
+  push:
+    branches: dev
+    paths:
+      - "ui/src/stories/**"
+      - ".github/workflows/chromatic.yml"
+defaults:
+  run:
+    working-directory: ui
+jobs:
+  test-dan-deploy-storybook-ke-chromatic:
+    runs-on: ubuntu-latest
+    environment: surreal_ocean_ui_stories_deployment
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: yarn
+      - uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.PROJECT_TOKEN_CHROMATIC }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          workingDir: ui

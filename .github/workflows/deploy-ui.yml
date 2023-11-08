@@ -1,0 +1,40 @@
+name: Surreal Ocean UI Service Deployment to AWS
+on:
+  # Workflow di-trigger saat push ke branch main
+  # dan terdapat perubahan pada ui/ saja
+  # atau perubahan pada file workflow ini sendiri
+  # namun tidak saat terjadi perubahan pada
+  # ui/.storybook atau ui/src/stories
+  push:
+    branches:
+      - main
+    paths:
+      - "ui/**"
+      - ".github/workflows/build-ui.yml"
+      - "!ui/.storybook/**"
+      - "!ui/src/stories/**"
+jobs:
+  deploy-ui-surreal-ocean:
+    runs-on: ubuntu-latest
+    environment: aws_deployment
+    env:
+      AWS_DOMAIN: ${{secrets.AWS_DOMAIN}}
+      AWS_USER: ${{secrets.AWS_USER}}
+      AWS_B64_ENCODED_KEY: ${{secrets.AWS_B64_ENCODED_KEY}}
+      AWS_KEY_FILE: ${{secrets.AWS_KEY_FILE}}
+      PRODUCTION_UI_SERVICE: ${{secrets.PRODUCTION_UI_SERVICE}}
+    steps:
+      - name: Menuliskan known_hosts pada workflow
+        run: |
+          ssh-keygen -R $AWS_DOMAIN
+          ssh-keyscan -H $AWS_DOMAIN >> ~/.ssh/known_hosts
+      - name: Menuliskan file private key
+        run: |
+          echo "$AWS_B64_ENCODED_KEY" | base64 --decode > $AWS_KEY_FILE
+      - name: Login ke AWS
+        run: |
+          ssh -i $AWS_KEY_FILE $AWS_USER@$AWS_DOMAIN
+      - name: Rebuild dan deploy ulang UI dengan latest tag
+        run: |
+          sudo docker compose pull
+          sudo docker compose up -d --no-deps $PRODUCTION_UI_SERVICE

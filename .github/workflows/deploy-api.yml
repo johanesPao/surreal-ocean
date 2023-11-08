@@ -1,0 +1,36 @@
+name: Surreal Ocean API Service Deployment to AWS
+on:
+  # Workflow di-trigger saat push ke branch dev
+  # dan terdapat perubahan pada api/ saja
+  # atau perubahan pada file workflow ini sendiri
+  push:
+    branches:
+      - main
+    paths:
+      - "api/**"
+      - ".github/workflows/build-api.yml"
+jobs:
+  deploy-api-surreal-ocean:
+    runs-on: ubuntu-latest
+    environment: aws_deployment
+    env:
+      AWS_DOMAIN: ${{secrets.AWS_DOMAIN}}
+      AWS_USER: ${{secrets.AWS_USER}}
+      AWS_B64_ENCODED_KEY: ${{secrets.AWS_B64_ENCODED_KEY}}
+      AWS_KEY_FILE: ${{secrets.AWS_KEY_FILE}}
+      PRODUCTION_API_SERVICE: ${{secrets.PRODUCTION_API_SERVICE}}
+    steps:
+      - name: Menuliskan known_hosts pada workflow
+        run: |
+          ssh-keygen -R $AWS_DOMAIN
+          ssh-keyscan -H $AWS_DOMAIN >> ~/.ssh/known_hosts
+      - name: Menuliskan file private key
+        run: |
+          echo "$AWS_B64_ENCODED_KEY" | base64 --decode > $AWS_KEY_FILE
+      - name: Login ke AWS
+        run: |
+          ssh -i $AWS_KEY_FILE $AWS_USER@$AWS_DOMAIN
+      - name: Rebuild dan deploy ulang API dengan latest tag
+        run: |
+          sudo docker compose pull
+          sudo docker compose up -d --no-deps $PRODUCTION_API_SERVICE

@@ -1,0 +1,8 @@
+# env pada config.toml ini hanya dibaca saat runtime menggunakan command
+# 'cargo run' atau 'cargo test', namun tidak dibaca saat kompilasi biner final
+# menggunakan 'cargo build'.
+# Untuk menjalankan aplikasi biner hasil build, perlu untuk mendefinisikan
+# variabel environment - environment di bawah ini pada host
+[env]
+API_ENDPOINT_URL = "127.0.0.1"
+API_PORT = "8081"

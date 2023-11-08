@@ -1,0 +1,36 @@
+name: Build actix-web API - Surreal Ocean
+on:
+  # Workflow di-trigger saat push ke branch dev
+  # dan terdapat perubahan pada api/ saja
+  # atau perubahan pada file workflow ini sendiri
+  push:
+    branches:
+      - dev
+    paths:
+      - "api/**"
+      - ".github/workflows/build-api.yml"
+jobs:
+  build-api-surreal-ocean:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repositori Github
+        uses: actions/checkout@v4
+      - name: Ekstrak Docker image metadata
+        id: metadata
+        uses: docker/metadata-action@v5
+        with:
+          images: j0hanespao/surreal-ocean-api
+          tags: |
+            type=semver,pattern={{version}},value=v1.0.0
+      - name: Login ke DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Build Docker image dan push ke container repository
+        uses: docker/build-push-action@v5
+        with:
+          context: ./api
+          push: true
+          tags: ${{ steps.metadata.outputs.tags }}
+          labels: ${{steps.metadata.outputs.labels}}

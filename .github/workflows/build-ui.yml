@@ -1,0 +1,48 @@
+name: Build React UI - Surreal Ocean
+on:
+  # Workflow di-trigger saat push ke branch dev
+  # dan terdapat perubahan pada ui/ saja
+  # atau perubahan pada file workflow ini sendiri
+  # namun tidak saat terjadi perubahan pada
+  # ui/.storybook atau ui/src/stories
+  push:
+    branches:
+      - dev
+    paths:
+      - "ui/**"
+      - ".github/workflows/build-ui.yml"
+      - "!ui/.storybook/**"
+      - "!ui/src/stories/**"
+jobs:
+  build-ui-surreal-ocean:
+    runs-on: ubuntu-latest
+    environment: docker_image_deployment
+    steps:
+      - name: Checkout repositori GitHub
+        uses: actions/checkout@v4
+      - name: Ekstrak Docker image metadata
+        id: metadata
+        uses: docker/metadata-action@v5
+        with:
+          images: j0hanespao/surreal-ocean-ui
+          tags: |
+            type=semver,pattern={{version}},value=v1.0.0
+      - name: Login ke DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Build Docker image dan push ke container repository
+        uses: docker/build-push-action@v5
+        with:
+          context: ./ui
+          build-args: |
+            "VITE_NAMA_SITUS=${{ vars.VITE_NAMA_SITUS }}"
+          secrets: |
+            "VITE_DEV_API=${{ secrets.VITE_DEV_API }}"
+            "VITE_PROD_API=${{ secrets.VITE_PROD_API }}"
+            "VITE_GH_USER=${{ secrets.VITE_GH_USER }}"
+            "VITE_GH_TOKEN=${{ secrets.VITE_GH_TOKEN }}"
+          push: true
+          tags: ${{ steps.metadata.outputs.tags }}
+          labels: ${{ steps.metadata.outputs.labels }}
